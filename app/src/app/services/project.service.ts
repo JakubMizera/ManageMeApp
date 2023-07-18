@@ -5,7 +5,23 @@ import { Project } from '../types';
   providedIn: 'root'
 })
 export class ProjectService {
-  private projects: Project[] = [];
+  private projects: Project[] = [
+    {
+      id: 1,
+      name: 'Project Management Tool',
+      description: 'A web application for managing projects, tasks, and teams.',
+    },
+    {
+      id: 2,
+      name: 'E-Commerce Platform',
+      description: 'An online marketplace for buying and selling goods.',
+    },
+    {
+      id: 3,
+      name: 'Weather Forecasting App',
+      description: 'A mobile application that provides real-time weather updates and forecasts.',
+    }
+  ];
 
   constructor() { }
 
