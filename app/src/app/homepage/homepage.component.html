@@ -3,6 +3,15 @@
     <p>Project nr {{project.id}}</p>
     <h2>{{project.name}}</h2>
     <p>{{project.description}}</p>
-    <button>Show details</button>
+    <button (click)="toggleDetails(project)">Show details</button>
+    <div *ngIf="project.showDetails">
+      <p>Project start date: {{project.startDate}}</p>
+      <p>Duration: {{project.duration}}</p>
+      <p>Expected duration: {{project.expectedDuration}}</p>
+      <p>Number of hours worked: {{project.hoursWorked}}</p>
+      <p>Users: {{project.involvedUsers}}</p>
+      <p>Functionalities: {{project.functionalities}}</p>
+    </div>
   </div>
+
 </div>

@@ -16,4 +16,8 @@ export class HomepageComponent implements OnInit {
     this.projects = this.projectService.getAllProjects();
   };
 
+  toggleDetails(project: Project): void {
+    project.showDetails = !project.showDetails;
+  }
+
 }
