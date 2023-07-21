@@ -11,9 +11,9 @@ export class ProjectService {
       name: 'Project Management Tool',
       description: 'A web application for managing projects, tasks, and teams.',
       startDate: new Date('2023-07-02T10:00:00'),
-      duration: 2 * 60 * 60 * 1000, // 2 hours in milliseconds
-      expectedDuration: 3 * 60 * 60 * 1000, // 3 hours in milliseconds
-      hoursWorked: 0,
+      duration: 1,
+      expectedDuration: 15,
+      hoursWorked: 1,
       functionalities: [],
       involvedUsers: []
     },
