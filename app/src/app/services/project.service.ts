@@ -10,18 +10,37 @@ export class ProjectService {
       id: 1,
       name: 'Project Management Tool',
       description: 'A web application for managing projects, tasks, and teams.',
+      startDate: new Date('2023-07-02T10:00:00'),
+      duration: 2 * 60 * 60 * 1000, // 2 hours in milliseconds
+      expectedDuration: 3 * 60 * 60 * 1000, // 3 hours in milliseconds
+      hoursWorked: 0,
+      functionalities: [],
+      involvedUsers: []
     },
     {
       id: 2,
       name: 'E-Commerce Platform',
       description: 'An online marketplace for buying and selling goods.',
+      startDate: new Date('2023-07-02T10:00:00'),
+      duration: 4 * 60 * 60 * 1000, // 4 hours in milliseconds
+      expectedDuration: 6 * 60 * 60 * 1000, // 6 hours in milliseconds
+      hoursWorked: 0,
+      functionalities: [],
+      involvedUsers: []
     },
     {
       id: 3,
       name: 'Weather Forecasting App',
       description: 'A mobile application that provides real-time weather updates and forecasts.',
+      startDate: new Date('2023-07-03T11:00:00'),
+      duration: 5 * 60 * 60 * 1000, // 5 hours in milliseconds
+      expectedDuration: 8 * 60 * 60 * 1000, // 8 hours in milliseconds
+      hoursWorked: 0,
+      functionalities: [],
+      involvedUsers: []
     }
   ];
+  
 
   constructor() { }
 
