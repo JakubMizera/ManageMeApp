@@ -22,8 +22,8 @@ export class ProjectService {
       name: 'E-Commerce Platform',
       description: 'An online marketplace for buying and selling goods.',
       startDate: new Date('2023-07-02T10:00:00'),
-      duration: 4 * 60 * 60 * 1000, // 4 hours in milliseconds
-      expectedDuration: 6 * 60 * 60 * 1000, // 6 hours in milliseconds
+      duration: 4,
+      expectedDuration: 30,
       hoursWorked: 0,
       functionalities: [],
       involvedUsers: []
@@ -33,9 +33,9 @@ export class ProjectService {
       name: 'Weather Forecasting App',
       description: 'A mobile application that provides real-time weather updates and forecasts.',
       startDate: new Date('2023-07-03T11:00:00'),
-      duration: 5 * 60 * 60 * 1000, // 5 hours in milliseconds
-      expectedDuration: 8 * 60 * 60 * 1000, // 8 hours in milliseconds
-      hoursWorked: 0,
+      duration: 0,
+      expectedDuration: 16,
+      hoursWorked: 14,
       functionalities: [],
       involvedUsers: []
     }
