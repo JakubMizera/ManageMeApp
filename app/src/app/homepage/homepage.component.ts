@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Project } from '../types';
 import { ProjectService } from '../services/project.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-homepage',
@@ -10,14 +11,14 @@ import { ProjectService } from '../services/project.service';
 export class HomepageComponent implements OnInit {
   projects!: Project[];
 
-  constructor(private projectService: ProjectService) { }
+  constructor(private projectService: ProjectService, private router: Router) { }
 
   ngOnInit(): void {
     this.projects = this.projectService.getAllProjects();
   };
 
-  toggleDetails(project: Project): void {
-    project.showDetails = !project.showDetails;
-  }
+  navigateToProject(id: number): void {
+    this.router.navigate(['/project', id]);
+  };
 
-}
+};
