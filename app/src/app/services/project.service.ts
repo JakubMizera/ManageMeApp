@@ -67,7 +67,7 @@ export class ProjectService {
 
   editProject(id: number, projectToEdit: Project): void {
     const projects = this.getAllProjects();
-    const index = projects.findIndex((project: Project) => project.id === id);
+    const index = projects.findIndex(project => project.id === id);
     if (index === -1) {
       throw new Error(`Cannot find project with id ${id}`);
     };
