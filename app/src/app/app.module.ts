@@ -7,6 +7,8 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { ProjectViewComponent } from './project-view/project-view.component';
 import { DatePipe } from '@angular/common';
 import { ProjectCreateComponent } from './project-create/project-create.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -17,9 +19,10 @@ import { ProjectCreateComponent } from './project-create/project-create.componen
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+  export class AppModule { }
