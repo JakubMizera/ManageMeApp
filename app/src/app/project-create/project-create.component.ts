@@ -19,9 +19,9 @@ export class ProjectCreateComponent implements OnInit {
       name: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
       startDate: new FormControl(new Date(), Validators.required),
-      duration: new FormControl(1, [Validators.required, Validators.min(1)]),
-      expectedDuration: new FormControl(1, [Validators.required, Validators.min(1)]),
-      hoursWorked: new FormControl(0, [Validators.required, Validators.min(0)]),
+      duration: new FormControl<number | null>(null, [Validators.required, Validators.min(1)]),
+      expectedDuration: new FormControl<number | null>(null, [Validators.required, Validators.min(1)]),
+      hoursWorked: new FormControl<number | null>(null, [Validators.required, Validators.min(0)]),
       functionalities: new FormControl<Functionality[]>([]),
       involvedUsers: new FormControl<User[]>([]),
     }, { validators: this.validateDuration });
