@@ -8,6 +8,7 @@ import { ProjectViewComponent } from './project-view/project-view.component';
 import { DatePipe } from '@angular/common';
 import { ProjectCreateComponent } from './project-create/project-create.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NavigationComponent } from './navigation/navigation.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppComponent,
     HomepageComponent,
     ProjectViewComponent,
-    ProjectCreateComponent
+    ProjectCreateComponent,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,
