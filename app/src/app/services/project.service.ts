@@ -58,8 +58,6 @@ export class ProjectService {
 
   addProject(project: Project): void {
     const projects = this.getAllProjects();
-    // const lastId = projects.reduce((last, current)=> current.id > last ? current.id : last, 0);
-    // const newId = lastId + 1;
     projects.push(project);
   };
 

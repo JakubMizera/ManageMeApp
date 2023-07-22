@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { ProjectViewComponent } from './project-view/project-view.component';
 import { DatePipe } from '@angular/common';
+import { ProjectCreateComponent } from './project-create/project-create.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
-    ProjectViewComponent
+    ProjectViewComponent,
+    ProjectCreateComponent
   ],
   imports: [
     BrowserModule,
