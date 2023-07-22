@@ -15,6 +15,7 @@ export class HomepageComponent implements OnInit {
 
   ngOnInit(): void {
     this.projects = this.projectService.getAllProjects();
+    console.log(this.projects);
   };
 
   navigateToProject(id: number): void {

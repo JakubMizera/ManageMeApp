@@ -14,13 +14,6 @@
   </div>
 
   <div class="form-group">
-    <label for="startDate">Start Date:</label>
-    <input id="startDate" type="date" formControlName="startDate" class="form-control" required>
-    <div *ngIf="projectForm.controls['startDate']?.invalid && projectForm.controls['startDate']?.touched"
-      class="text-danger">Start Date is required</div>
-  </div>
-
-  <div class="form-group">
     <label for="duration">Duration:</label>
     <input id="duration" type="number" formControlName="duration" class="form-control" required min="1">
     <div *ngIf="projectForm.controls['duration']?.invalid && projectForm.controls['duration']?.touched"
@@ -36,14 +29,9 @@
 
   <div class="form-group">
     <label for="hoursWorked">Hours Worked:</label>
-    <input id="hoursWorked" type="number" formControlName="hoursWorked" class="form-control" required min="1">
+    <input id="hoursWorked" type="number" formControlName="hoursWorked" class="form-control" required min="0">
     <div *ngIf="projectForm.controls['hoursWorked']?.invalid && projectForm.controls['hoursWorked']?.touched"
-      class="text-danger">Hours Worked is required and should be at least 1</div>
-  </div>
-
-  <div class="form-group">
-    <label for="functionalities">Functionalities:</label>
-    <input id="functionalities" type="text" formControlName="functionalities" class="form-control">
+      class="text-danger">Hours Worked is required and should be at least 0</div>
   </div>
 
   <div class="form-group">
@@ -51,9 +39,14 @@
     <input id="involvedUsers" type="text" formControlName="involvedUsers" class="form-control">
   </div>
 
+  <div class="form-group">
+    <label for="functionalities">Functionalities:</label>
+    <input id="functionalities" type="text" formControlName="functionalities" class="form-control">
+  </div>
+
   <div *ngIf="projectForm.errors?.['durationError']" class="text-danger">
     Duration should be less than Expected Duration.
   </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="projectForm.invalid">Submit</button>
+  <button type="submit" class="btn btn-primary" [disabled]="projectForm.invalid">Create this project</button>
 </form>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../services/project.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Project } from '../types';
+import { Functionality, Project, User } from '../types';
 import { Router } from '@angular/router';
 
 @Component({
@@ -19,11 +19,11 @@ export class ProjectCreateComponent implements OnInit {
       name: new FormControl('', Validators.required),
       description: new FormControl('', Validators.required),
       startDate: new FormControl(new Date(), Validators.required),
-      duration: new FormControl('', [Validators.required, Validators.min(1)]),
-      expectedDuration: new FormControl('', [Validators.required, Validators.min(1)]),
-      hoursWorked: new FormControl('', [Validators.required, Validators.min(1)]),
-      functionalities: new FormControl([]),
-      involvedUsers: new FormControl([]),
+      duration: new FormControl(1, [Validators.required, Validators.min(1)]),
+      expectedDuration: new FormControl(1, [Validators.required, Validators.min(1)]),
+      hoursWorked: new FormControl(0, [Validators.required, Validators.min(0)]),
+      functionalities: new FormControl<Functionality[]>([]),
+      involvedUsers: new FormControl<User[]>([]),
     }, { validators: this.validateDuration });
   }
 
@@ -35,8 +35,8 @@ export class ProjectCreateComponent implements OnInit {
     } else {
       //TODO change this alert
       alert('Fill all the fields');
-    }
-  }
+    };
+  };
 
   validateDuration(formGroup: FormGroup) {
     const durationControl = formGroup.get('duration');
@@ -48,6 +48,6 @@ export class ProjectCreateComponent implements OnInit {
       return duration < expectedDuration ? null : { durationError: true };
     }
     return null;
-  }
+  };
 
-}
+};
