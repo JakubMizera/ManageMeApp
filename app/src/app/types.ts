@@ -46,9 +46,8 @@ export interface Project {
   duration: number,
   expectedDuration: number,
   hoursWorked: number,
-  functionalities?: Functionality[],
+  functionalities: Functionality[],
   involvedUsers: User[],
-  showDetails?: boolean,
 };
 
 export enum Status {
@@ -67,4 +66,4 @@ export enum Role {
   ADMIN = 'Admin',
   DEVOPS = 'Devops',
   DEVELOPER = 'Developer',
-}
+};

@@ -56,9 +56,13 @@ export class ProjectService {
     return project;
   };
 
-  addProject(project: Project): void {
+  addProject(project: Project): number {
     const projects = this.getAllProjects();
+    const index = projects.reduce((prev, curr) => curr.id > prev ? curr.id : prev, 0);
+    const id = index + 1;
+    project.id = id;
     projects.push(project);
+    return id;
   };
 
   editProject(id: number, projectToEdit: Project): void {
