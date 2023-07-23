@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Project } from '../types';
+import { FormGroup } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -84,4 +85,15 @@ export class ProjectService {
     projects.splice(index, 1);
   };
 
+  validateDuration(formGroup: FormGroup) {
+    const durationControl = formGroup.get('duration');
+    const expectedDurationControl = formGroup.get('expectedDuration');
+
+    if (durationControl && expectedDurationControl) {
+      const duration = durationControl.value;
+      const expectedDuration = expectedDurationControl.value;
+      return duration < expectedDuration ? null : { durationError: true };
+    }
+    return null;
+  };
 }

@@ -24,7 +24,7 @@ export class ProjectCreateComponent implements OnInit {
       hoursWorked: new FormControl<number | null>(null, [Validators.required, Validators.min(0)]),
       functionalities: new FormControl<Functionality[]>([]),
       involvedUsers: new FormControl<User[]>([]),
-    }, { validators: this.validateDuration } as AbstractControlOptions);
+    }, { validators: this.projectService.validateDuration } as AbstractControlOptions);
   }
 
   onSubmit(): void {
@@ -36,18 +36,6 @@ export class ProjectCreateComponent implements OnInit {
       //TODO change this alert
       alert('Fill all the fields');
     };
-  };
-
-  validateDuration(formGroup: FormGroup) {
-    const durationControl = formGroup.get('duration');
-    const expectedDurationControl = formGroup.get('expectedDuration');
-
-    if (durationControl && expectedDurationControl) {
-      const duration = durationControl.value;
-      const expectedDuration = expectedDurationControl.value;
-      return duration < expectedDuration ? null : { durationError: true };
-    }
-    return null;
   };
 
 };

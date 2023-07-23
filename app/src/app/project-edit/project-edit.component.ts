@@ -32,7 +32,7 @@ export class ProjectEditComponent implements OnInit {
         hoursWorked: new FormControl<number | null>(project.hoursWorked, [Validators.required, Validators.min(0)]),
         functionalities: new FormControl<Functionality[]>(project.functionalities),
         involvedUsers: new FormControl<User[]>(project.involvedUsers),
-      }, { validators: this.validateDuration } as AbstractControlOptions);
+      }, { validators: this.projectService.validateDuration } as AbstractControlOptions);
     } else {
       // TODO: Handle case when project not found
     }
@@ -47,17 +47,5 @@ export class ProjectEditComponent implements OnInit {
       //TODO change this alert
       alert('Fill all the fields');
     };
-  };
-
-  validateDuration(formGroup: FormGroup) {
-    const durationControl = formGroup.get('duration');
-    const expectedDurationControl = formGroup.get('expectedDuration');
-
-    if (durationControl && expectedDurationControl) {
-      const duration = durationControl.value;
-      const expectedDuration = expectedDurationControl.value;
-      return duration < expectedDuration ? null : { durationError: true };
-    }
-    return null;
   };
 };
