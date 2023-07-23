@@ -3,6 +3,7 @@
     <p>Project nr {{project.id}}</p>
     <h2>{{project.name}}</h2>
     <p>{{project.description}}</p>
-    <button (click)="navigateToProject(project.id)">Show this project</button>
+    <button (click)="navigateToProjectView(project.id)">Show this project</button>
+    <button (click)="navigateToProjectEdit(project.id)">Edit this project</button>
   </div>
 </div>

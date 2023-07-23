@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../services/project.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControlOptions, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Functionality, User } from '../types';
 import { Router } from '@angular/router';
 
@@ -24,7 +24,7 @@ export class ProjectCreateComponent implements OnInit {
       hoursWorked: new FormControl<number | null>(null, [Validators.required, Validators.min(0)]),
       functionalities: new FormControl<Functionality[]>([]),
       involvedUsers: new FormControl<User[]>([]),
-    }, { validators: this.validateDuration });
+    }, { validators: this.validateDuration } as AbstractControlOptions);
   }
 
   onSubmit(): void {

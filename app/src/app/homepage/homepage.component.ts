@@ -18,8 +18,12 @@ export class HomepageComponent implements OnInit {
     console.log(this.projects);
   };
 
-  navigateToProject(id: number): void {
+  navigateToProjectView(id: number): void {
     this.router.navigate(['/project', id]);
   };
+
+  navigateToProjectEdit(id: number): void {
+    this.router.navigate(['/project/edit', id]);
+  }
 
 };
