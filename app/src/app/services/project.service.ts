@@ -6,7 +6,8 @@ import { FormGroup } from '@angular/forms';
   providedIn: 'root'
 })
 export class ProjectService {
-  private projects: Project[] = [
+  projects!: Project[];
+  private defaultProjects: Project[] = [
     {
       id: 1,
       name: 'Project Management Tool',
@@ -42,15 +43,29 @@ export class ProjectService {
     }
   ];
 
-  constructor() { }
+  constructor() {
+    this.loadProjectsFromLocalStorage();
+    if (this.projects.length === 0) {
+      this.projects = this.defaultProjects;
+      this.saveProjectsToLocalStorage();
+    };
+  };
+
+  private loadProjectsFromLocalStorage(): void {
+    const storedProjects = localStorage.getItem('projects');
+    this.projects = storedProjects ? JSON.parse(storedProjects) : [];
+  };
+
+  private saveProjectsToLocalStorage(): void {
+    localStorage.setItem('projects', JSON.stringify(this.projects));
+  };
 
   getAllProjects(): Project[] {
-    return this.projects
+    return this.projects;
   };
 
   getProjectById(id: number): Project {
-    const projects = this.getAllProjects();
-    const project = projects.find(project => project.id === id);
+    const project = this.projects.find(project => project.id === id);
     if (!project) {
       throw new Error(`Cannot find project with id ${id}`);
     }
@@ -58,31 +73,30 @@ export class ProjectService {
   };
 
   addProject(project: Project): number {
-    const projects = this.getAllProjects();
-    const index = projects.reduce((prev, curr) => curr.id > prev ? curr.id : prev, 0);
-    const id = index + 1;
+    const id = this.projects.reduce((prev, curr) => curr.id > prev ? curr.id : prev, 0) + 1;
     project.id = id;
-    projects.push(project);
+    this.projects.push(project);
+    this.saveProjectsToLocalStorage();
     return id;
   };
 
   editProject(id: number, projectToEdit: Project): void {
-    const projects = this.getAllProjects();
-    const index = projects.findIndex(project => project.id === id);
+    const index = this.projects.findIndex(project => project.id === id);
     if (index === -1) {
       throw new Error(`Cannot find project with id ${id}`);
-    };
+    }
     projectToEdit.id = id;
-    projects[index] = projectToEdit;
+    this.projects[index] = projectToEdit;
+    this.saveProjectsToLocalStorage();
   };
 
   deleteProject(id: number): void {
-    const projects = this.getAllProjects();
-    const index = projects.findIndex((project: Project) => project.id === id);
+    const index = this.projects.findIndex((project: Project) => project.id === id);
     if (index === -1) {
       throw new Error(`Cannot find project with id ${id}`);
-    };
-    projects.splice(index, 1);
+    }
+    this.projects.splice(index, 1);
+    this.saveProjectsToLocalStorage();
   };
 
   validateDuration(formGroup: FormGroup) {
