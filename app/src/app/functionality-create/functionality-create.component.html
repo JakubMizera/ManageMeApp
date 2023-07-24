@@ -27,19 +27,12 @@
     <div class="form-group">
         <label for="status">Status:</label>
         <select id="status" formControlName="status" class="form-control" required>
-            <option value="TODO">TODO</option>
+            <option value="TODO">To do</option>
             <option value="IN_PROGRESS">In Progress</option>
             <option value="DONE">Done</option>
         </select>
         <div *ngIf="functionalityForm.controls['status']?.invalid && functionalityForm.controls['status']?.touched"
             class="text-danger">Status is required</div>
-    </div>
-
-    <div class="form-group">
-        <label for="addedDate">Added Date:</label>
-        <input id="addedDate" type="date" formControlName="addedDate" class="form-control" required>
-        <div *ngIf="functionalityForm.controls['addedDate']?.invalid && functionalityForm.controls['addedDate']?.touched"
-            class="text-danger">Added Date is required</div>
     </div>
 
     <div class="form-group">

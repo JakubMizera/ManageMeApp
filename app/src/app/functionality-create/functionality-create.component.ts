@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FunctionalityService } from '../services/functionality.service';
 import { Functionality, Priority, Status } from '../types';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-functionality-create',
@@ -16,7 +16,9 @@ export class FunctionalityCreateComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private functionalityService: FunctionalityService,
-    private route: ActivatedRoute) { }
+    private route: ActivatedRoute,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
     this.projectId = Number(this.route.snapshot.paramMap.get('id'));
@@ -36,9 +38,10 @@ export class FunctionalityCreateComponent implements OnInit {
   onSubmit(): void {
     if (this.functionalityForm.valid) {
       const newFunctionality: Functionality = this.functionalityForm.value;
-      // check this projectId if its ok
       this.functionalityService.addFunctionality(this.projectId, newFunctionality);
       this.functionalityForm.reset();
+      // TODO navigate to functionalities view
+      this.router.navigate([]);
     };
   };
 };
