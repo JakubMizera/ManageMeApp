@@ -34,7 +34,7 @@ export class ProjectEditComponent implements OnInit {
         involvedUsers: new FormControl<User[]>(project.involvedUsers),
       }, { validators: this.projectService.validateDuration } as AbstractControlOptions);
     } else {
-      // TODO: Handle case when project not found
+      throw new Error(`Cannot find project with id ${this.projectId}`);
     }
   }
 
