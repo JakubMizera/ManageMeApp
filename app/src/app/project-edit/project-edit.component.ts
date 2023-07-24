@@ -43,9 +43,6 @@ export class ProjectEditComponent implements OnInit {
       const updatedProject = { ...this.projectForm.value, id: this.projectId };
       this.projectService.editProject(this.projectId, updatedProject);
       this.router.navigate(['/project', this.projectId]);
-    } else {
-      //TODO change this alert
-      alert('Fill all the fields');
     };
   };
 };

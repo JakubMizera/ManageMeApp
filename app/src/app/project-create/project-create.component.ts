@@ -25,17 +25,14 @@ export class ProjectCreateComponent implements OnInit {
       functionalities: new FormControl<Functionality[]>([]),
       involvedUsers: new FormControl<User[]>([]),
     }, { validators: this.projectService.validateDuration } as AbstractControlOptions);
-  }
+  };
 
   onSubmit(): void {
     if (this.projectForm.valid) {
       const newProjectId = this.projectService.addProject(this.projectForm.value);
       this.projectForm.reset();
       this.router.navigate(['/project', newProjectId]);
-    } else {
-      //TODO change this alert
-      alert('Fill all the fields');
-    };
+    }
   };
 
 };
