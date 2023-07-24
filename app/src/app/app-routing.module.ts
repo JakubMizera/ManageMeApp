@@ -4,12 +4,14 @@ import { HomepageComponent } from './homepage/homepage.component';
 import { ProjectViewComponent } from './project-view/project-view.component';
 import { ProjectCreateComponent } from './project-create/project-create.component';
 import { ProjectEditComponent } from './project-edit/project-edit.component';
+import { FunctionalityCreateComponent } from './functionality-create/functionality-create.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
   { path: 'project/add', component: ProjectCreateComponent },
   { path: 'project/:id', component: ProjectViewComponent },
   { path: 'project/edit/:id', component: ProjectEditComponent },
+  { path: 'project/:id/functionality/add', component: FunctionalityCreateComponent },
 ];
 
 @NgModule({
