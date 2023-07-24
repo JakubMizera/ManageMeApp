@@ -3,9 +3,9 @@
   <h2>{{project.name}}</h2>
   <p>{{project.description}}</p>
   <p>Project start date: {{project.startDate | date:'dd/MM/yyyy'}}</p>
-  <p>Project duration: {{project.duration}}h</p>
-  <p>Expected duration of the project: {{project.expectedDuration}}h</p>
-  <p>Number of hours worked: {{project.hoursWorked}}h</p>
+  <p>Project duration: {{project.duration}}h  (wyliczyć z zadań?)</p>
+  <p>Expected duration of the project: {{project.expectedDuration}}h (wyliczyć z funkcjonalnosci?)</p>
+  <p>Number of hours worked: {{project.hoursWorked}}h (wyliczyć z zadań)</p>
   <p>Users: {{project.involvedUsers}}</p>
   <p>Functionalities: {{project.functionalities}}</p>
   <button (click)="navigateToProjectEdit(project.id)">Edit this project</button>
