@@ -13,6 +13,8 @@ export class ProjectViewComponent implements OnInit {
 
   constructor(private projectService: ProjectService, private route: ActivatedRoute, private router: Router) { }
 
+  //TODO -> przewidywany czas trwania wyliczony z funkcjonalności; liczba wykonanych roboczogodzin wyliczona z zadań; zaangażowane osoby = osoby przypisane do zadań i funkcjonalności
+
   ngOnInit(): void {
     const projectId = Number(this.route.snapshot.paramMap.get('id'));
     if (projectId === null) {
