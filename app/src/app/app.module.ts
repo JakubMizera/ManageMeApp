@@ -10,6 +10,7 @@ import { ProjectCreateComponent } from './project-create/project-create.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ProjectEditComponent } from './project-edit/project-edit.component';
+import { FunctionalityCreateComponent } from './functionality-create/functionality-create.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ProjectEditComponent } from './project-edit/project-edit.component';
     ProjectViewComponent,
     ProjectCreateComponent,
     NavigationComponent,
-    ProjectEditComponent
+    ProjectEditComponent,
+    FunctionalityCreateComponent
   ],
   imports: [
     BrowserModule,
