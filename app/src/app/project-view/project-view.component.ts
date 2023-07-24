@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../services/project.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Project } from '../types';
 
 @Component({
@@ -11,7 +11,7 @@ import { Project } from '../types';
 export class ProjectViewComponent implements OnInit {
   project!: Project;
 
-  constructor(private projectService: ProjectService, private route: ActivatedRoute) { }
+  constructor(private projectService: ProjectService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     const projectId = Number(this.route.snapshot.paramMap.get('id'));
@@ -20,4 +20,14 @@ export class ProjectViewComponent implements OnInit {
     };
     this.project = this.projectService.getProjectById(projectId);
   };
+
+  navigateToProjectEdit(id: number): void {
+    this.router.navigate(['/project/edit', id]);
+  };
+
+  deleteProject(id: number): void {
+    this.projectService.deleteProject(id);
+    this.router.navigate(['/']);
+  };
+
 };

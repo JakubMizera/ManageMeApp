@@ -22,12 +22,4 @@ export class HomepageComponent implements OnInit {
     this.router.navigate(['/project', id]);
   };
 
-  navigateToProjectEdit(id: number): void {
-    this.router.navigate(['/project/edit', id]);
-  };
-
-  deleteProject(id: number): void {
-    this.projectService.deleteProject(id);
-  };
-
 };
