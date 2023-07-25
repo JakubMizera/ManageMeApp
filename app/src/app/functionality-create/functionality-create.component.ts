@@ -41,8 +41,7 @@ export class FunctionalityCreateComponent implements OnInit {
       const newFunctionality: Functionality = this.functionalityForm.value;
       this.functionalityService.addFunctionality(this.projectId, newFunctionality);
       this.functionalityForm.reset();
-      // TODO navigate to functionalities view
-      this.router.navigate([]);
+      this.router.navigate(['/project', this.projectId]);
     };
   };
 };
