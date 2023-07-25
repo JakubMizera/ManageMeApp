@@ -1,10 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { FunctionalityService } from '../services/functionality.service';
+import { Functionality } from '../types';
 
 @Component({
   selector: 'app-functionality-view',
   templateUrl: './functionality-view.component.html',
   styleUrls: ['./functionality-view.component.scss']
 })
-export class FunctionalityViewComponent {
+export class FunctionalityViewComponent implements OnInit {
+  projectId!: number;
+  functionalities: Functionality[] = [];
 
+  constructor(private route: ActivatedRoute, private functionalityService: FunctionalityService) {
+    this.projectId = Number(this.route.snapshot.paramMap.get('id'));
+  }
+
+  ngOnInit(): void {
+    const functionalities = this.functionalityService.getAllFunctionalities(this.projectId);
+    if (functionalities) {
+      this.functionalities = functionalities;
+    } else {
+      console.error('No functionalities found for project with id: ', this.projectId);
+    };
+  };
 }

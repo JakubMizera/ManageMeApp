@@ -1,1 +1,13 @@
-<p>functionality-view works!</p>
+<div class="container">
+    <div *ngFor="let functionality of functionalities">
+        <p>Name: {{functionality.name}}</p>
+        <p>Description: {{functionality.description}}</p>
+        <p>Status: {{functionality.status}}</p>
+        <p>Priority: {{functionality.priority}}</p>
+        <p>Worked on: {{functionality.hoursWorked}}h</p>
+        <p>Added: {{functionality.addedDate | date:'dd/MM/yyyy'}}</p>
+        <p>Start date: {{functionality.startDate | date:'dd/MM/yyyy'}}</p>
+        <p>Tasks: {{functionality.tasks}}</p>
+        <p>Users: {{functionality.involvedUsers}}</p>
+    </div>
+</div>
