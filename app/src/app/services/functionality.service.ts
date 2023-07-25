@@ -20,4 +20,24 @@ export class FunctionalityService {
       this.projectService.editProject(projectId, project);
     };
   };
+
+  getAllFunctionalities(projectId: number): Functionality[] | null {
+    // Get project from project service
+    const project = this.projectService.getProjectById(projectId);
+    if (project) {
+      return project.functionalities;
+    } else {
+      return null;
+    };
+  };
+
+  getFunctionalityById(projectId: number, functionalityId: number): Functionality | null {
+    // Get all functionalities for the project
+    const functionalities = this.getAllFunctionalities(projectId);
+    if (functionalities) {
+      return functionalities.find(f => f.id === functionalityId) || null;
+    } else {
+      return null;
+    };
+  };
 };
