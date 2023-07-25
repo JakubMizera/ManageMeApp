@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../services/project.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Project } from '../types';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-project-view',
@@ -11,7 +13,12 @@ import { Project } from '../types';
 export class ProjectViewComponent implements OnInit {
   project!: Project;
 
-  constructor(private projectService: ProjectService, private route: ActivatedRoute, private router: Router) { }
+  constructor(
+    private projectService: ProjectService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private dialog: MatDialog,
+  ) { }
 
   //TODO -> przewidywany czas trwania wyliczony z funkcjonalności; liczba wykonanych roboczogodzin wyliczona z zadań; zaangażowane osoby = osoby przypisane do zadań i funkcjonalności
 
@@ -28,8 +35,14 @@ export class ProjectViewComponent implements OnInit {
   };
 
   deleteProject(id: number): void {
-    this.projectService.deleteProject(id);
-    this.router.navigate(['/']);
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.projectService.deleteProject(id);
+        this.router.navigate(['/']);
+      };
+    });
   };
 
   navigateToFunctionalityCreate(id: number): void {

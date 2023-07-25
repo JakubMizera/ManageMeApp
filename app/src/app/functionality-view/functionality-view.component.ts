@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FunctionalityService } from '../services/functionality.service';
 import { Functionality } from '../types';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-functionality-view',
@@ -15,6 +17,7 @@ export class FunctionalityViewComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private functionalityService: FunctionalityService,
+    private dialog: MatDialog,
   ) {
     this.projectId = Number(this.route.snapshot.paramMap.get('id'));
   }
@@ -29,14 +32,13 @@ export class FunctionalityViewComponent implements OnInit {
   };
 
   deleteFunctionality(functionalityId: number): void {
-    //TODO change this confirmation to some kind of popup
-    const confirmation = confirm('Are you sure you want to delete this functionality?');
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
 
-    if (confirmation) {
-      console.log(functionalityId);
-      this.functionalityService.deleteFunctionality(this.projectId, functionalityId);
-      // After deletion, update the functionalities list
-      this.functionalities = this.functionalityService.getAllFunctionalities(this.projectId) || [];
-    };
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.functionalityService.deleteFunctionality(this.projectId, functionalityId);
+        this.functionalities = this.functionalityService.getAllFunctionalities(this.projectId) || [];
+      }
+    });
   };
 }
