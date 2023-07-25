@@ -16,9 +16,9 @@
     <div class="form-group">
         <label for="priority">Priority:</label>
         <select id="priority" formControlName="priority" class="form-control" required>
-            <option value="LOW">Low</option>
-            <option value="MEDIUM">Medium</option>
-            <option value="HIGH">High</option>
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
         </select>
         <div *ngIf="functionalityForm.controls['priority']?.invalid && functionalityForm.controls['priority']?.touched"
             class="text-danger">Priority is required</div>
@@ -27,9 +27,9 @@
     <div class="form-group">
         <label for="status">Status:</label>
         <select id="status" formControlName="status" class="form-control" required>
-            <option value="TODO">To do</option>
-            <option value="IN_PROGRESS">In Progress</option>
-            <option value="DONE">Done</option>
+            <option value="To do">To do</option>
+            <option value="Doing">Doing</option>
+            <option value="Done">Done</option>
         </select>
         <div *ngIf="functionalityForm.controls['status']?.invalid && functionalityForm.controls['status']?.touched"
             class="text-danger">Status is required</div>
