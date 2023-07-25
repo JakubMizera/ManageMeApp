@@ -1,5 +1,10 @@
 <form [formGroup]="functionalityForm" (ngSubmit)="onSubmit()" novalidate>
   <mat-form-field class="example-full-width">
+    <mat-label>Project</mat-label>
+    <input matInput disabled value={{projectName}}>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
     <mat-label>Name</mat-label>
     <input matInput id="name" type="text" formControlName="name" required>
   </mat-form-field>

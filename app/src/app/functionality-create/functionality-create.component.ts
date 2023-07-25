@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { FunctionalityService } from '../services/functionality.service';
 import { Functionality, Priority, Status } from '../types';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProjectService } from '../services/project.service';
 
 @Component({
   selector: 'app-functionality-create',
@@ -12,12 +13,14 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class FunctionalityCreateComponent implements OnInit {
   functionalityForm!: FormGroup;
   projectId!: number;
+  projectName!: string;
 
   constructor(
     private formBuilder: FormBuilder,
     private functionalityService: FunctionalityService,
     private route: ActivatedRoute,
     private router: Router,
+    private projectService: ProjectService,
   ) { }
 
   ngOnInit(): void {
@@ -34,6 +37,8 @@ export class FunctionalityCreateComponent implements OnInit {
       involvedUsers: [[]],
       tasks: [[]],
     });
+
+    this.setProjectName();
   };
 
   onSubmit(): void {
@@ -44,4 +49,8 @@ export class FunctionalityCreateComponent implements OnInit {
       this.router.navigate(['/project', this.projectId]);
     };
   };
+
+  setProjectName() {
+    this.projectName = this.projectService.getProjectById(this.projectId).name;
+  }
 };
