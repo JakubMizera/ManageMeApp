@@ -1,64 +1,43 @@
 <form [formGroup]="functionalityForm" (ngSubmit)="onSubmit()" novalidate>
-    <div class="form-group">
-        <label for="name">Name:</label>
-        <input id="name" type="text" formControlName="name" class="form-control" required>
-        <div *ngIf="functionalityForm.controls['name']?.invalid && functionalityForm.controls['name']?.touched"
-            class="text-danger">Name is required</div>
-    </div>
+  <mat-form-field class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input matInput id="name" type="text" formControlName="name" required>
+  </mat-form-field>
 
-    <div class="form-group">
-        <label for="description">Description:</label>
-        <input id="description" type="text" formControlName="description" class="form-control" required>
-        <div *ngIf="functionalityForm.controls['description']?.invalid && functionalityForm.controls['description']?.touched"
-            class="text-danger">Description is required</div>
-    </div>
+  <mat-form-field class="example-full-width">
+    <mat-label>Description</mat-label>
+    <input matInput id="description" type="text" formControlName="description" required>
+  </mat-form-field>
 
-    <div class="form-group">
-        <label for="priority">Priority:</label>
-        <select id="priority" formControlName="priority" class="form-control" required>
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-        </select>
-        <div *ngIf="functionalityForm.controls['priority']?.invalid && functionalityForm.controls['priority']?.touched"
-            class="text-danger">Priority is required</div>
-    </div>
+  <mat-form-field>
+    <mat-label>Priority</mat-label>
+    <mat-select id="priority" formControlName="priority" required>
+      <mat-option value="Low">Low</mat-option>
+      <mat-option value="Medium">Medium</mat-option>
+      <mat-option value="High">High</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-    <div class="form-group">
-        <label for="status">Status:</label>
-        <select id="status" formControlName="status" class="form-control" required>
-            <option value="To do">To do</option>
-            <option value="Doing">Doing</option>
-            <option value="Done">Done</option>
-        </select>
-        <div *ngIf="functionalityForm.controls['status']?.invalid && functionalityForm.controls['status']?.touched"
-            class="text-danger">Status is required</div>
-    </div>
 
-    <div class="form-group">
-        <label for="startDate">Start Date:</label>
-        <input id="startDate" type="date" formControlName="startDate" class="form-control" required>
-        <div *ngIf="functionalityForm.controls['startDate']?.invalid && functionalityForm.controls['startDate']?.touched"
-            class="text-danger">Start Date is required</div>
-    </div>
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select id="status" formControlName="status" class="form-control" required>
+      <mat-option value="To do">To do</mat-option>
+      <mat-option value="Doing">Doing</mat-option>
+      <mat-option value="Done">Done</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-    <div class="form-group">
-        <label for="hoursWorked">Hours Worked:</label>
-        <input id="hoursWorked" type="number" formControlName="hoursWorked" class="form-control" required min="0">
-        <div *ngIf="functionalityForm.controls['hoursWorked']?.invalid && functionalityForm.controls['hoursWorked']?.touched"
-            class="text-danger">Hours Worked is required and should be at least 0</div>
-    </div>
 
-    <div class="form-group">
-        <label for="involvedUsers">Involved Users:</label>
-        <input id="involvedUsers" type="text" formControlName="involvedUsers" class="form-control">
-    </div>
+  <mat-form-field>
+    <mat-label>Start Date</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="startDate" required>
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
 
-    <div class="form-group">
-        <label for="tasks">Tasks:</label>
-        <input id="tasks" type="text" formControlName="tasks" class="form-control">
-    </div>
 
-    <button type="submit" class="btn btn-primary" [disabled]="functionalityForm.invalid">Create this
-        functionality</button>
+  <button mat-raised-button color="primary" type="submit" [disabled]="functionalityForm.invalid">Create this
+    functionality</button>
+
 </form>
