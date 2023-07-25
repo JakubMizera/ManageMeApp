@@ -31,8 +31,8 @@ export class FunctionalityService {
   addFunctionality(projectId: number, functionality: Functionality): void {
     const project = this.projectService.getProjectById(projectId);
 
-    // ADD UUID HERE
     if (project && !project.functionalities.includes(functionality)) {
+      functionality.id = Number(Date.now());
       project.functionalities.push(functionality);
       this.projectService.editProject(projectId, project);
     };

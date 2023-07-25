@@ -35,6 +35,4 @@ export class FunctionalityViewComponent implements OnInit {
       this.functionalities = this.functionalityService.getAllFunctionalities(this.projectId) || [];
     };
   };
-  // delete nr 3 => deleted nr 1 
-  // delete nr 5 => deleted nr 2 
 }
