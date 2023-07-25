@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { NavigationComponent } from './navigation/navigation.component';
 import { ProjectEditComponent } from './project-edit/project-edit.component';
 import { FunctionalityCreateComponent } from './functionality-create/functionality-create.component';
+import { FunctionalityViewComponent } from './functionality-view/functionality-view.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FunctionalityCreateComponent } from './functionality-create/functionali
     ProjectCreateComponent,
     NavigationComponent,
     ProjectEditComponent,
-    FunctionalityCreateComponent
+    FunctionalityCreateComponent,
+    FunctionalityViewComponent
   ],
   imports: [
     BrowserModule,
