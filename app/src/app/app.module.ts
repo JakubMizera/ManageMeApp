@@ -12,6 +12,9 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { ProjectEditComponent } from './project-edit/project-edit.component';
 import { FunctionalityCreateComponent } from './functionality-create/functionality-create.component';
 import { FunctionalityViewComponent } from './functionality-view/functionality-view.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 
 
 @NgModule({
@@ -23,12 +26,15 @@ import { FunctionalityViewComponent } from './functionality-view/functionality-v
     NavigationComponent,
     ProjectEditComponent,
     FunctionalityCreateComponent,
-    FunctionalityViewComponent
+    FunctionalityViewComponent,
+    ConfirmationDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    MatButtonModule,
+    MatDialogModule,
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

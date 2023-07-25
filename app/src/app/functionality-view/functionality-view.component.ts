@@ -6,13 +6,16 @@ import { Functionality } from '../types';
 @Component({
   selector: 'app-functionality-view',
   templateUrl: './functionality-view.component.html',
-  styleUrls: ['./functionality-view.component.scss']
+  styleUrls: ['./functionality-view.component.scss'],
 })
 export class FunctionalityViewComponent implements OnInit {
   projectId!: number;
   functionalities: Functionality[] = [];
 
-  constructor(private route: ActivatedRoute, private functionalityService: FunctionalityService) {
+  constructor(
+    private route: ActivatedRoute,
+    private functionalityService: FunctionalityService,
+  ) {
     this.projectId = Number(this.route.snapshot.paramMap.get('id'));
   }
 
