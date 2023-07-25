@@ -9,18 +9,6 @@ export class FunctionalityService {
 
   constructor(private projectService: ProjectService) { }
 
-  addFunctionality(projectId: number, functionality: Functionality): void {
-    //Get project from project service
-    const project = this.projectService.getProjectById(projectId);
-
-    if (project && !project.functionalities.includes(functionality)) {
-      project.functionalities.push(functionality);
-
-      //Update project in projectService
-      this.projectService.editProject(projectId, project);
-    };
-  };
-
   getAllFunctionalities(projectId: number): Functionality[] | null {
     // Get project from project service
     const project = this.projectService.getProjectById(projectId);
@@ -32,7 +20,6 @@ export class FunctionalityService {
   };
 
   getFunctionalityById(projectId: number, functionalityId: number): Functionality | null {
-    // Get all functionalities for the project
     const functionalities = this.getAllFunctionalities(projectId);
     if (functionalities) {
       return functionalities.find(f => f.id === functionalityId) || null;
@@ -40,4 +27,31 @@ export class FunctionalityService {
       return null;
     };
   };
+
+  addFunctionality(projectId: number, functionality: Functionality): void {
+    const project = this.projectService.getProjectById(projectId);
+
+    // ADD UUID HERE
+    if (project && !project.functionalities.includes(functionality)) {
+      project.functionalities.push(functionality);
+      this.projectService.editProject(projectId, project);
+    };
+  };
+
+  //edit functionality here
+  //TODO => wyciagnac const project = this.projetService do osobnej private methody 
+
+  deleteFunctionality(projectId: number, functionalityId: number): void {
+    const project = this.projectService.getProjectById(projectId);
+
+    if (project) {
+      const index = project.functionalities.findIndex(f => f.id === functionalityId);
+
+      if (index !== -1) {
+        project.functionalities.splice(index, 1);
+        this.projectService.editProject(projectId, project);
+      };
+    };
+  };
+
 };

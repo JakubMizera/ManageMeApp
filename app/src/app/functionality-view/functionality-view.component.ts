@@ -24,4 +24,17 @@ export class FunctionalityViewComponent implements OnInit {
       console.error('No functionalities found for project with id: ', this.projectId);
     };
   };
+
+  deleteFunctionality(functionalityId: number): void {
+    const confirmation = confirm('Are you sure you want to delete this functionality?');
+
+    if (confirmation) {
+      console.log(functionalityId);
+      this.functionalityService.deleteFunctionality(this.projectId, functionalityId);
+      // After deletion, update the functionalities list
+      this.functionalities = this.functionalityService.getAllFunctionalities(this.projectId) || [];
+    };
+  };
+  // delete nr 3 => deleted nr 1 
+  // delete nr 5 => deleted nr 2 
 }

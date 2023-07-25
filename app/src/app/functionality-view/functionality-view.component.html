@@ -9,5 +9,6 @@
         <p>Start date: {{functionality.startDate | date:'dd/MM/yyyy'}}</p>
         <p>Tasks: {{functionality.tasks}}</p>
         <p>Users: {{functionality.involvedUsers}}</p>
+        <button (click)="deleteFunctionality(functionality.id)">Delete this functionality</button>
     </div>
 </div>
