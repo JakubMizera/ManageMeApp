@@ -9,6 +9,10 @@ export class FunctionalityService {
 
   constructor(private projectService: ProjectService) { }
 
+  private getProjectById(projectId: number) {
+    return this.projectService.getProjectById(projectId);
+  };
+
   getAllFunctionalities(projectId: number): Functionality[] | null {
     // Get project from project service
     const project = this.projectService.getProjectById(projectId);
@@ -29,7 +33,7 @@ export class FunctionalityService {
   };
 
   addFunctionality(projectId: number, functionality: Functionality): void {
-    const project = this.projectService.getProjectById(projectId);
+    const project = this.getProjectById(projectId);
 
     if (project && !project.functionalities.includes(functionality)) {
       functionality.id = Number(Date.now());
@@ -38,8 +42,20 @@ export class FunctionalityService {
     };
   };
 
-  //edit functionality here
-  //TODO => wyciagnac const project = this.projetService do osobnej private methody 
+  editFunctionality(projectId: number, functionalityId: number, updatedFunctionality: Functionality): void {
+    const project = this.getProjectById(projectId);
+
+    if (project) {
+      const index = project.functionalities.findIndex(f => f.id === functionalityId);
+
+      if (index !== -1) {
+        updatedFunctionality.id = functionalityId;
+
+        project.functionalities[index] = updatedFunctionality;
+        this.projectService.editProject(projectId, project);
+      };
+    };
+  };
 
   deleteFunctionality(projectId: number, functionalityId: number): void {
     const project = this.projectService.getProjectById(projectId);

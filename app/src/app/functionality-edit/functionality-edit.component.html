@@ -1,1 +1,41 @@
-<p>functionality-edit works!</p>
+<div class="container">
+    <form [formGroup]="functionalityForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name">
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description" />
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Priority</mat-label>
+            <mat-select id="priority" formControlName="priority" required>
+                <mat-option value="Low">Low</mat-option>
+                <mat-option value="Medium">Medium</mat-option>
+                <mat-option value="High">High</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Status</mat-label>
+            <mat-select id="status" formControlName="status" class="form-control" required>
+                <mat-option value="To do">To do</mat-option>
+                <mat-option value="Doing">Doing</mat-option>
+                <mat-option value="Done">Done</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Start Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="startDate" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="!functionalityForm.valid">Update
+            Functionality</button>
+    </form>
+</div>
