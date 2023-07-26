@@ -35,9 +35,10 @@ export class FunctionalityService {
 
   addFunctionality(projectId: number, functionality: Functionality): void {
     const project = this.getProjectById(projectId);
+    const functionalityId = project.functionalities.reduce((prev, curr) => curr.id > prev ? curr.id : prev, 0) + 1;
 
     if (project && !project.functionalities.includes(functionality)) {
-      functionality.id = Number(Date.now());
+      functionality.id = functionalityId;
       project.functionalities.push(functionality);
       this.projectService.editProject(projectId, project);
     };
