@@ -35,7 +35,7 @@
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-        <button mat-raised-button color="primary" type="submit" [disabled]="!functionalityForm.valid">Update
+        <button mat-raised-button color="primary" type="submit" [disabled]="!functionalityForm.valid || !functionalityForm.dirty">Update
             Functionality</button>
     </form>
 </div>
