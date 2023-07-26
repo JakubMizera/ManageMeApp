@@ -1,13 +1,19 @@
 html {
-    box-sizing: border-box;
-    font-size: 16px;
-    font-family: 'DM Sans', sans-serif;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: "DM Sans", sans-serif;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
 *,
 *:before,
 *:after {
-    box-sizing: inherit;
+  box-sizing: inherit;
 }
 
 body,
@@ -21,19 +27,28 @@ p,
 ol,
 ul,
 button {
-    margin: 0;
-    padding: 0;
-    font-weight: normal;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
 }
 
 ol,
 ul {
-    list-style: none;
+  list-style: none;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
+  max-width: 100%;
+  height: auto;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// form styling in one place
+
+form {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 20px;
+  width: 60%;
+  gap: 1em;
+  margin: 0 auto;
+}
