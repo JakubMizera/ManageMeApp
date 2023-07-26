@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FunctionalityService } from '../services/functionality.service';
 import { Functionality } from '../types';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
@@ -18,6 +18,7 @@ export class FunctionalityViewComponent implements OnInit {
     private route: ActivatedRoute,
     private functionalityService: FunctionalityService,
     private dialog: MatDialog,
+    private router: Router,
   ) {
     this.projectId = Number(this.route.snapshot.paramMap.get('id'));
   }
@@ -41,4 +42,9 @@ export class FunctionalityViewComponent implements OnInit {
       }
     });
   };
+
+  navigateToEditFunctionality(functionalityId: number): void {
+    this.router.navigate(['project', this.projectId, 'functionality', 'edit', functionalityId]);
+  }
+
 }

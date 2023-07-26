@@ -6,6 +6,7 @@ import { ProjectCreateComponent } from './project-create/project-create.componen
 import { ProjectEditComponent } from './project-edit/project-edit.component';
 import { FunctionalityCreateComponent } from './functionality-create/functionality-create.component';
 import { FunctionalityViewComponent } from './functionality-view/functionality-view.component';
+import { FunctionalityEditComponent } from './functionality-edit/functionality-edit.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   },
   { path: 'project/edit/:id', component: ProjectEditComponent },
   { path: 'project/:id/functionality/add', component: FunctionalityCreateComponent },
+  { path: 'project/:id/functionality/edit/:functionalityId', component: FunctionalityEditComponent },
 ];
 
 @NgModule({
