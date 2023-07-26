@@ -20,6 +20,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FunctionalityEditComponent } from './functionality-edit/functionality-edit.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ProjectEditComponent,
     FunctionalityCreateComponent,
     FunctionalityViewComponent,
-    ConfirmationDialogComponent
+    ConfirmationDialogComponent,
+    FunctionalityEditComponent
   ],
   imports: [
     BrowserModule,
