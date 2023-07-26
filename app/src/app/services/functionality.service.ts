@@ -14,8 +14,8 @@ export class FunctionalityService {
   };
 
   getAllFunctionalities(projectId: number): Functionality[] | null {
-    // Get project from project service
-    const project = this.projectService.getProjectById(projectId);
+    const project = this.getProjectById(projectId);
+
     if (project) {
       return project.functionalities;
     } else {
@@ -25,6 +25,7 @@ export class FunctionalityService {
 
   getFunctionalityById(projectId: number, functionalityId: number): Functionality | null {
     const functionalities = this.getAllFunctionalities(projectId);
+
     if (functionalities) {
       return functionalities.find(f => f.id === functionalityId) || null;
     } else {
