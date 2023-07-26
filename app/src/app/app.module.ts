@@ -21,7 +21,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FunctionalityEditComponent } from './functionality-edit/functionality-edit.component';
-
+import { MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MY_FORMATS } from './consts';
 
 @NgModule({
   declarations: [
@@ -47,8 +49,14 @@ import { FunctionalityEditComponent } from './functionality-edit/functionality-e
     MatDatepickerModule,
     MatNativeDateModule,
     BrowserAnimationsModule,
+    MatMomentDateModule,
   ],
-  providers: [DatePipe],
+  providers: [
+    DatePipe,
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
+  ],
   bootstrap: [AppComponent]
 })
-  export class AppModule { }
+export class AppModule { }
