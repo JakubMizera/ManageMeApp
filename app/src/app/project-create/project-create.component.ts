@@ -21,7 +21,7 @@ export class ProjectCreateComponent implements OnInit {
       startDate: new FormControl(new Date(), Validators.required),
       duration: new FormControl<number | null>(null, [Validators.required, Validators.min(1)]),
       expectedDuration: new FormControl<number | null>(null, [Validators.required, Validators.min(1)]),
-      hoursWorked: new FormControl<number | null>(null, [Validators.required, Validators.min(0)]),
+      hoursWorked: new FormControl<number>(0),
       functionalities: new FormControl<Functionality[]>([]),
       involvedUsers: new FormControl<User[]>([]),
     }, { validators: this.projectService.validateDuration } as AbstractControlOptions);

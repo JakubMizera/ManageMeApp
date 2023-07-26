@@ -1,52 +1,27 @@
 <form [formGroup]="projectForm" (ngSubmit)="onSubmit()" novalidate>
-  <div class="form-group">
-    <label for="name">Name:</label>
-    <input id="name" type="text" formControlName="name" class="form-control" required>
-    <div *ngIf="projectForm.controls['name']?.invalid && projectForm.controls['name']?.touched" class="text-danger">Name
-      is required</div>
-  </div>
+  <mat-form-field class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input matInput id="name" type="text" formControlName="name" required>
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="description">Description:</label>
-    <input id="description" type="text" formControlName="description" class="form-control" required>
-    <div *ngIf="projectForm.controls['description']?.invalid && projectForm.controls['description']?.touched"
-      class="text-danger">Description is required</div>
-  </div>
+  <mat-form-field class="example-full-width">
+    <mat-label>Description</mat-label>
+    <input matInput id="description" type="text" formControlName="description" required>
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="duration">Duration:</label>
-    <input id="duration" type="number" formControlName="duration" class="form-control" required min="1">
-    <div *ngIf="projectForm.controls['duration']?.invalid && projectForm.controls['duration']?.touched"
-      class="text-danger">Duration is required and should be at least 1</div>
-  </div>
+  <mat-form-field class="example-full-width">
+    <mat-label>Duration</mat-label>
+    <input matInput id="duration" type="number" formControlName="duration" required min="1">
+  </mat-form-field>
 
-  <div class="form-group">
-    <label for="expectedDuration">Expected Duration:</label>
-    <input id="expectedDuration" type="number" formControlName="expectedDuration" class="form-control" required min="1">
-    <div *ngIf="projectForm.controls['expectedDuration']?.invalid && projectForm.controls['expectedDuration']?.touched"
-      class="text-danger">Expected Duration is required and should be at least 1</div>
-  </div>
-
-  <div class="form-group">
-    <label for="hoursWorked">Hours Worked:</label>
-    <input id="hoursWorked" type="number" formControlName="hoursWorked" class="form-control" required min="0">
-    <div *ngIf="projectForm.controls['hoursWorked']?.invalid && projectForm.controls['hoursWorked']?.touched"
-      class="text-danger">Hours Worked is required and should be at least 0</div>
-  </div>
-
-  <div class="form-group">
-    <label for="involvedUsers">Involved Users:</label>
-    <input id="involvedUsers" type="text" formControlName="involvedUsers" class="form-control">
-  </div>
-
-  <div class="form-group">
-    <label for="functionalities">Functionalities:</label>
-    <input id="functionalities" type="text" formControlName="functionalities" class="form-control">
-  </div>
+  <mat-form-field class="example-full-width">
+    <mat-label>Expected Duration</mat-label>
+    <input matInput id="expectedDuration" type="number" formControlName="expectedDuration" required min="1">
+  </mat-form-field>
 
   <div *ngIf="projectForm.errors?.['durationError']" class="text-danger">
-    Duration should be less than Expected Duration.
+    Expected Duration must be higher than duration.
   </div>
 
-  <button type="submit" class="btn btn-primary" [disabled]="projectForm.invalid">Create this project</button>
+  <button mat-raised-button color="primary" type="submit" [disabled]="projectForm.invalid">Create this project</button>
 </form>
