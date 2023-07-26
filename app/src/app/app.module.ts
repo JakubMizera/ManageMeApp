@@ -24,6 +24,7 @@ import { FunctionalityEditComponent } from './functionality-edit/functionality-e
 import { MatMomentDateModule, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MY_FORMATS } from './consts';
+import { MatIconModule } from '@angular/material/icon'
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { MY_FORMATS } from './consts';
     MatNativeDateModule,
     BrowserAnimationsModule,
     MatMomentDateModule,
+    MatIconModule,
   ],
   providers: [
     DatePipe,
