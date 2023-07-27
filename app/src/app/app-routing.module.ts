@@ -7,6 +7,7 @@ import { ProjectEditComponent } from './project-edit/project-edit.component';
 import { FunctionalityCreateComponent } from './functionality-create/functionality-create.component';
 import { FunctionalityViewComponent } from './functionality-view/functionality-view.component';
 import { FunctionalityEditComponent } from './functionality-edit/functionality-edit.component';
+import { FunctionalityListComponent } from './functionality-list/functionality-list.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -15,7 +16,7 @@ const routes: Routes = [
     path: 'project/:id',
     component: ProjectViewComponent,
     children: [
-      { path: '', component: FunctionalityViewComponent }
+      { path: '', component: FunctionalityListComponent }
     ],
   },
   { path: 'project/edit/:id', component: ProjectEditComponent },

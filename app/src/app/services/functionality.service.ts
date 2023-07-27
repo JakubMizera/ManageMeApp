@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ProjectService } from './project.service';
-import { Functionality } from '../types';
+import { Functionality, Status } from '../types';
 
 @Injectable({
   providedIn: 'root'
@@ -69,6 +69,15 @@ export class FunctionalityService {
         project.functionalities.splice(index, 1);
         this.projectService.editProject(projectId, project);
       };
+    };
+  };
+
+  getFunctionalitiesByStatus(projectId: number, status: Status): Functionality[] | null {
+    const functionalities = this.getAllFunctionalities(projectId);
+    if (functionalities) {
+      return functionalities.filter(f => f.status === status);
+    } else {
+      return null;
     };
   };
 

@@ -1,1 +1,26 @@
-<p>functionality-list works!</p>
+<div class="container">
+  <div class="column">
+    <h2>To do</h2>
+    <div *ngFor="let functionality of todoFunctionalities">
+      <p>{{ functionality.name }}</p>
+      <button (click)="onStatusChange(functionality, Status.DOING)">Move to Doing</button>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2>Doing</h2>
+    <div *ngFor="let functionality of doingFunctionalities">
+      <p>{{ functionality.name }}</p>
+      <button (click)="onStatusChange(functionality, Status.DONE)">Move to Done</button>
+      <button (click)="onStatusChange(functionality, Status.TODO)">Move back to To Do</button>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2>Done</h2>
+    <div *ngFor="let functionality of doneFunctionalities">
+      <p>{{ functionality.name }}</p>
+      <button (click)="onStatusChange(functionality, Status.DOING)">Move back to Doing</button>
+    </div>
+  </div>
+</div>
