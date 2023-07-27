@@ -26,7 +26,9 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { MY_FORMATS } from './consts';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-
+import { FunctionalityListComponent } from './functionality-list/functionality-list.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { MatMenuModule } from '@angular/material/menu';
     FunctionalityCreateComponent,
     FunctionalityViewComponent,
     ConfirmationDialogComponent,
-    FunctionalityEditComponent
+    FunctionalityEditComponent,
+    FunctionalityListComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +58,8 @@ import { MatMenuModule } from '@angular/material/menu';
     MatMomentDateModule,
     MatIconModule,
     MatMenuModule,
+    MatTableModule,
+    MatSortModule,
   ],
   providers: [
     DatePipe,
