@@ -6,10 +6,26 @@
   padding: 20px;
 
   .project {
+    display: flex;
+    flex-direction: column;
     border-radius: 15px;
     border: 1px solid black;
     padding: 20px;
     box-shadow: 2px 2px 10px rgb(182, 182, 182);
     max-width: 500px;
+    min-height: 220px;
+    position: relative;
+  }
+
+  .create {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menuBtn {
+    position: absolute;
+    right: 3px;
+    top: 3px;
   }
 }

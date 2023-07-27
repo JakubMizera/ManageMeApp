@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Project } from '../types';
 import { ProjectService } from '../services/project.service';
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
 
 @Component({
   selector: 'app-homepage',
@@ -11,7 +13,7 @@ import { Router } from '@angular/router';
 export class HomepageComponent implements OnInit {
   projects!: Project[];
 
-  constructor(private projectService: ProjectService, private router: Router) { }
+  constructor(private projectService: ProjectService, private router: Router, private dialog: MatDialog,) { }
 
   ngOnInit(): void {
     this.projects = this.projectService.getAllProjects();
@@ -20,6 +22,25 @@ export class HomepageComponent implements OnInit {
 
   navigateToProjectView(id: number): void {
     this.router.navigate(['/project', id]);
+  };
+
+  navigateToProjectCreate(): void {
+    this.router.navigate(['/project/add']);
+  };
+
+  navigateToProjectEdit(id: number): void {
+    this.router.navigate(['/project/edit', id]);
+  };
+
+  deleteProject(id: number): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.projectService.deleteProject(id);
+        this.router.navigate(['/']);
+      };
+    });
   };
 
 };

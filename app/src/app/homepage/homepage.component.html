@@ -4,5 +4,25 @@
     <h2>{{project.name}}</h2>
     <p>{{project.description}}</p>
     <button mat-raised-button color="primary" (click)="navigateToProjectView(project.id)">Work on project</button>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="project manage options" class="menuBtn">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+
+      <button mat-menu-item (click)="navigateToProjectEdit(project.id)">
+        <mat-icon>mode_edit</mat-icon>
+        <span>Edit project</span>
+      </button>
+
+      <button mat-menu-item (click)="deleteProject(project.id)">
+        <mat-icon>delete</mat-icon>
+        <span>Delete project</span>
+      </button>
+    </mat-menu>
+
+  </div>
+  <div class="project create">
+    <button mat-fab extended color="primary" (click)="navigateToProjectCreate()"><mat-icon>note_add</mat-icon>Create new
+      project</button>
   </div>
 </div>
