@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FunctionalityService } from '../services/functionality.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Functionality, Status } from '../types';
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-functionality-list',
@@ -15,10 +17,15 @@ export class FunctionalityListComponent implements OnInit {
   projectId: number;
 
   Status = Status;
+  functionalities: Functionality[] = [];
+
+
 
   constructor(
     private functionalityService: FunctionalityService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router,
+    private dialog: MatDialog,
   ) {
     this.projectId = Number(this.route.snapshot.paramMap.get('id'));
   }
@@ -36,6 +43,21 @@ export class FunctionalityListComponent implements OnInit {
   onStatusChange(functionality: Functionality, status: Status) {
     functionality.status = status;
     this.functionalityService.editFunctionality(this.projectId, functionality.id, functionality);
-    this.getFunctionalities();  
+    this.getFunctionalities();
+  };
+
+  deleteFunctionality(functionalityId: number): void {
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.functionalityService.deleteFunctionality(this.projectId, functionalityId);
+        this.getFunctionalities();
+      }
+    });
+  };
+
+  navigateToEditFunctionality(functionalityId: number): void {
+    this.router.navigate(['project', this.projectId, 'functionality', 'edit', functionalityId]);
   };
 }

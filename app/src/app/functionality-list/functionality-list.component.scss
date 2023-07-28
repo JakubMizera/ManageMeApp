@@ -1,11 +1,24 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  background-color: #f1f5fd;
   padding: 20px;
 
   .column {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
+
+    h2 {
+      font-size: 1.6rem;
+    }
+
+    .functionality {
+      background-color: white;
+      padding: 10px;
+      border-radius: 8px;
+      width: 90%;
+    }
   }
 }
