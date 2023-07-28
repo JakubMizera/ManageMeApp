@@ -3,7 +3,8 @@
     <h2>To do</h2>
     <div *ngFor="let functionality of todoFunctionalities">
       <p>{{ functionality.name }}</p>
-      <button (click)="onStatusChange(functionality, Status.DOING)">Move to Doing</button>
+      <button (click)="onStatusChange(functionality, Status.DOING)" mat-fab><mat-icon>arrow_forward</mat-icon></button>
+      <button></button>
     </div>
   </div>
 
@@ -11,8 +12,8 @@
     <h2>Doing</h2>
     <div *ngFor="let functionality of doingFunctionalities">
       <p>{{ functionality.name }}</p>
-      <button (click)="onStatusChange(functionality, Status.DONE)">Move to Done</button>
-      <button (click)="onStatusChange(functionality, Status.TODO)">Move back to To Do</button>
+      <button (click)="onStatusChange(functionality, Status.TODO)" mat-fab><mat-icon>arrow_back</mat-icon></button>
+      <button (click)="onStatusChange(functionality, Status.DONE)" mat-fab><mat-icon>arrow_forward</mat-icon></button>
     </div>
   </div>
 
@@ -20,7 +21,7 @@
     <h2>Done</h2>
     <div *ngFor="let functionality of doneFunctionalities">
       <p>{{ functionality.name }}</p>
-      <button (click)="onStatusChange(functionality, Status.DOING)">Move back to Doing</button>
+      <button (click)="onStatusChange(functionality, Status.DOING)" mat-fab><mat-icon>arrow_back</mat-icon></button>
     </div>
   </div>
 </div>
