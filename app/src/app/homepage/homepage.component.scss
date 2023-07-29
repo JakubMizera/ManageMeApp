@@ -1,20 +1,21 @@
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  justify-items: stretch;
+  grid-auto-rows: 220px;
   gap: 10px;
   padding: 20px;
+  background-color: #222329;
+  min-height: calc(100vh - 40px);
 
   .project {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     border-radius: 15px;
-    border: 1px solid black;
+    border: 1px solid rgb(60, 60, 60);
     padding: 20px;
-    box-shadow: 2px 2px 10px rgb(182, 182, 182);
     max-width: 500px;
     min-height: 220px;
+    background-color: #292b31;
     position: relative;
   }
 
@@ -28,5 +29,6 @@
     position: absolute;
     right: 3px;
     top: 3px;
+    border: 1px solid rgb(60, 60, 60);
   }
 }
