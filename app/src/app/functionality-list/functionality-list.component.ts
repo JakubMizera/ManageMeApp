@@ -19,8 +19,6 @@ export class FunctionalityListComponent implements OnInit {
   Status = Status;
   functionalities: Functionality[] = [];
 
-
-
   constructor(
     private functionalityService: FunctionalityService,
     private route: ActivatedRoute,
@@ -59,5 +57,9 @@ export class FunctionalityListComponent implements OnInit {
 
   navigateToEditFunctionality(functionalityId: number): void {
     this.router.navigate(['project', this.projectId, 'functionality', 'edit', functionalityId]);
+  };
+
+  navigateToFunctionalityDetails(functionalityId: number): void {
+    this.router.navigate(['/project', this.projectId, 'functionality', functionalityId]);
   };
 }

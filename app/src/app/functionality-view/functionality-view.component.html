@@ -1,16 +1,13 @@
-<!-- Change this to a list => List of functionality name + CRUD buttons -->
 <div class="container">
-    <div *ngFor="let functionality of functionalities" class="functionality">
-        <p>Name: {{functionality.name}}</p>
-        <p>Description: {{functionality.description}}</p>
-        <p>Status: {{functionality.status}}</p>
-        <p>Priority: {{functionality.priority}}</p>
-        <p>Worked on: {{functionality.hoursWorked}}h</p>
-        <p>Added: {{functionality.addedDate | date:'dd/MM/yyyy'}}</p>
-        <p>Start date: {{functionality.startDate | date:'dd/MM/yyyy'}}</p>
-        <p>Tasks: {{functionality.tasks}}</p>
-        <p>Users: {{functionality.involvedUsers}}</p>
-        <button mat-raised-button color="primary" (click)="navigateToEditFunctionality(functionality.id)">Edit this functionality</button>
-        <button mat-raised-button color="warn" (click)="deleteFunctionality(functionality.id)">Delete this functionality</button>
-    </div>
+  <div class="functionality">
+    <p>Name: {{functionality?.name}}</p>
+    <p>Description: {{functionality?.description}}</p>
+    <p>Status: {{functionality?.status}}</p>
+    <p>Priority: {{functionality?.priority}}</p>
+    <p>Worked on: {{functionality?.hoursWorked}}h</p>
+    <p>Added: {{functionality?.addedDate | date:'dd/MM/yyyy'}}</p>
+    <p>Start date: {{functionality?.startDate | date:'dd/MM/yyyy'}}</p>
+    <p>Tasks: {{functionality?.tasks}}</p>
+    <p>Users: {{functionality?.involvedUsers}}</p>
+  </div>
 </div>

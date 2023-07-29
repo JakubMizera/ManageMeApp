@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FunctionalityService } from '../services/functionality.service';
 import { Functionality } from '../types';
-import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-functionality-view',
@@ -12,39 +10,21 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class FunctionalityViewComponent implements OnInit {
   projectId!: number;
-  functionalities: Functionality[] = [];
+  functionalityId!: number;
+  functionality!: Functionality | null;
 
   constructor(
     private route: ActivatedRoute,
     private functionalityService: FunctionalityService,
-    private dialog: MatDialog,
-    private router: Router,
-  ) {
-    this.projectId = Number(this.route.snapshot.paramMap.get('id'));
-  }
+  ) { }
 
   ngOnInit(): void {
-    const functionalities = this.functionalityService.getAllFunctionalities(this.projectId);
-    if (functionalities) {
-      this.functionalities = functionalities;
+    this.projectId = Number(this.route.snapshot.paramMap.get('id'));
+    this.functionalityId = Number(this.route.snapshot.paramMap.get('functionalityId'));
+    if(this.functionalityId === null) {
+      throw new Error(`Cannot find functionality with id ${this.functionalityId}`);
     } else {
-      console.error('No functionalities found for project with id: ', this.projectId);
+      this.functionality = this.functionalityService.getFunctionalityById(this.projectId, this.functionalityId);
     };
   };
-
-  deleteFunctionality(functionalityId: number): void {
-    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.functionalityService.deleteFunctionality(this.projectId, functionalityId);
-        this.functionalities = this.functionalityService.getAllFunctionalities(this.projectId) || [];
-      }
-    });
-  };
-
-  navigateToEditFunctionality(functionalityId: number): void {
-    this.router.navigate(['project', this.projectId, 'functionality', 'edit', functionalityId]);
-  }
-
 }

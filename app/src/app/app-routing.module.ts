@@ -21,6 +21,7 @@ const routes: Routes = [
   },
   { path: 'project/edit/:id', component: ProjectEditComponent },
   { path: 'project/:id/functionality/add', component: FunctionalityCreateComponent },
+  { path: 'project/:id/functionality/:functionalityId', component: FunctionalityViewComponent},
   { path: 'project/:id/functionality/edit/:functionalityId', component: FunctionalityEditComponent },
 ];
 

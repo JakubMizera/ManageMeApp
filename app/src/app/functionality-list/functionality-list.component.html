@@ -8,13 +8,16 @@
         <mat-icon>more_horiz</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="navigateToFunctionalityDetails(functionality.id)">
+          <mat-icon>info</mat-icon>
+          <span>Show details</span>
+        </button>
         <button mat-menu-item (click)="navigateToEditFunctionality(functionality.id)">
           <mat-icon>mode_edit</mat-icon>
           <span>Edit functionality</span>
         </button>
-        <button mat-menu-item (click)="deleteFunctionality(functionality.id)">
-          <mat-icon>delete</mat-icon>
-          <span>Delete functionality</span>
+        <button mat-menu-item (click)="deleteFunctionality(functionality.id)"><mat-icon>delete</mat-icon><span>Delete
+            functionality</span>
         </button>
       </mat-menu>
       <div class="navBtns">
@@ -35,6 +38,10 @@
         <mat-icon>more_horiz</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="navigateToFunctionalityDetails(functionality.id)">
+          <mat-icon>info</mat-icon>
+          <span>Show details</span>
+        </button>
         <button mat-menu-item (click)="navigateToEditFunctionality(functionality.id)">
           <mat-icon>mode_edit</mat-icon>
           <span>Edit functionality</span>
@@ -60,6 +67,10 @@
         <mat-icon>more_horiz</mat-icon>
       </button>
       <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="navigateToFunctionalityDetails(functionality.id)">
+          <mat-icon>info</mat-icon>
+          <span>Show details</span>
+        </button>
         <button mat-menu-item (click)="navigateToEditFunctionality(functionality.id)">
           <mat-icon>mode_edit</mat-icon>
           <span>Edit functionality</span>
@@ -71,7 +82,8 @@
       </mat-menu>
       <div class="navBtns">
         <button (click)="onStatusChange(functionality, Status.DOING)" mat-fab><mat-icon>arrow_back</mat-icon></button>
-        <button (click)="onStatusChange(functionality, Status.DONE)" mat-fab disabled><mat-icon>arrow_forward</mat-icon></button>
+        <button (click)="onStatusChange(functionality, Status.DONE)" mat-fab
+          disabled><mat-icon>arrow_forward</mat-icon></button>
       </div>
     </div>
   </div>
