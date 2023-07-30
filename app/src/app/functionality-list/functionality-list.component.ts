@@ -62,4 +62,8 @@ export class FunctionalityListComponent implements OnInit {
   navigateToFunctionalityDetails(functionalityId: number): void {
     this.router.navigate(['/project', this.projectId, 'functionality', functionalityId]);
   };
+
+  navigateToCreateTask(functionalityId: number): void {
+    this.router.navigate(['project', this.projectId, 'functionality', functionalityId, 'add']);
+  }
 }

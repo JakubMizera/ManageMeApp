@@ -16,13 +16,11 @@ export interface Task {
   description: string,
   priority: Priority,
   status: Status,
-  dueDate: Date,
   addedDate: Date,
   startDate?: Date,
   finishedDate?: Date,
   hoursWorked: number,
   assignedTo: User,
-  functionality: Functionality,
 };
 
 export interface Functionality {

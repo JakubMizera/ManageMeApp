@@ -1,0 +1,31 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()" novalidate>
+  <mat-form-field class="example-full-width">
+    <mat-label>Name</mat-label>
+    <input matInput id="name" type="text" formControlName="name" required>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Description</mat-label>
+    <input matInput id="description" type="text" formControlName="description" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Priority</mat-label>
+    <mat-select id="priority" formControlName="priority" required>
+      <mat-option value="Low">Low</mat-option>
+      <mat-option value="Medium">Medium</mat-option>
+      <mat-option value="High">High</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Status</mat-label>
+    <mat-select id="status" formControlName="status" class="form-control" required>
+      <mat-option value="To do">To do</mat-option>
+      <mat-option value="Doing">Doing</mat-option>
+      <mat-option value="Done">Done</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="taskForm.invalid">Create Task</button>
+</form>

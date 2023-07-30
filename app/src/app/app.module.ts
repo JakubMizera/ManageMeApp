@@ -29,6 +29,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { FunctionalityListComponent } from './functionality-list/functionality-list.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { TaskCreateComponent } from './task-create/task-create.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MatSortModule } from '@angular/material/sort';
     FunctionalityViewComponent,
     ConfirmationDialogComponent,
     FunctionalityEditComponent,
-    FunctionalityListComponent
+    FunctionalityListComponent,
+    TaskCreateComponent
   ],
   imports: [
     BrowserModule,
