@@ -9,6 +9,7 @@ import { FunctionalityViewComponent } from './functionality-view/functionality-v
 import { FunctionalityEditComponent } from './functionality-edit/functionality-edit.component';
 import { FunctionalityListComponent } from './functionality-list/functionality-list.component';
 import { TaskCreateComponent } from './task-create/task-create.component';
+import { TaskViewComponent } from './task-view/task-view.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'project/:id/functionality/:functionalityId', component: FunctionalityViewComponent },
   { path: 'project/:id/functionality/edit/:functionalityId', component: FunctionalityEditComponent },
   { path: 'project/:id/functionality/:functionalityId/add', component: TaskCreateComponent },
+  { path: 'project/:id/functionality/:functionalityId/task/:taskId', component: TaskViewComponent },
 ];
 
 @NgModule({
