@@ -44,7 +44,7 @@ export class TaskCreateComponent implements OnInit {
       this.taskService.addTask(this.projectId, this.functionalityId, newTask);
       this.taskForm.reset();
       // TODO = navigate to correct place
-      // this.router.navigate(['/project', this.projectId, ])
+      this.router.navigate(['/project', this.projectId, 'functionality', this.functionalityId, 'task', ])
     };
   };
 

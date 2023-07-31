@@ -32,7 +32,8 @@ export class TaskService {
     };
   };
 
-  addTask(projectId: number, functionalityId: number, task: Task): void {
+  //TODO -> figure this out
+  addTask(projectId: number, functionalityId: number, task: Task): number | undefined {
     const functionality = this.getFunctionalityById(projectId, functionalityId);
     if (functionality !== null) {
       const taskId = functionality.tasks.reduce((prev, curr) => curr.id > prev ? curr.id : prev, 0) + 1;
@@ -40,6 +41,7 @@ export class TaskService {
         task.id = taskId;
         functionality.tasks.push(task);
         this.functionalityService.editFunctionality(projectId, functionalityId, functionality);
+        return taskId;
       };
     };
   };
