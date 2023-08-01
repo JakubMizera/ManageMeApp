@@ -57,8 +57,8 @@ export class TaskListComponent implements OnInit {
     });
   }
 
-  navigateToCreateTask(functionalityId: number): void {
-    this.router.navigate(['project', this.projectId, 'functionality', functionalityId, 'add']);
+  navigateToCreateTask(): void {
+    this.router.navigate(['project', this.projectId, 'functionality', this.functionalityId, 'add']);
   };
 
   navigateToEditTask(taskId: number): void {

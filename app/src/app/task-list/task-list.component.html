@@ -1,1 +1,97 @@
-<p>task-list works!</p>
+<div class="nav">
+  <h1>Task board</h1>
+  <button mat-fab extended color="accent" (click)="navigateToCreateTask()">
+    <mat-icon>add_circle</mat-icon>
+    Create task
+  </button>
+</div>
+<div class="container">
+  <div class="column">
+    <h2>To do</h2>
+    <div *ngFor="let task of todoTasks" class="task">
+      <h1>{{ task.name }}</h1>
+      <p>{{task.description}}</p>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="task manage options" class="menuBtn">
+        <mat-icon>more_horiz</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="navigateToTaskDetails(task.id)">
+          <mat-icon>info</mat-icon>
+          <span>Show details</span>
+        </button>
+        <button mat-menu-item (click)="navigateToEditTask(task.id)">
+          <mat-icon>mode_edit</mat-icon>
+          <span>Edit task</span>
+        </button>
+        <button mat-menu-item (click)="deleteTask(task.id)">
+          <mat-icon>delete</mat-icon>
+          <span>Delete task</span>
+        </button>
+      </mat-menu>
+      <div class="navBtns">
+        <button (click)="onStatusChange(task, Status.TODO)" mat-mini-fab
+          disabled><mat-icon>arrow_back</mat-icon></button>
+        <button (click)="onStatusChange(task, Status.DOING)" mat-mini-fab><mat-icon>arrow_forward</mat-icon></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2>Doing</h2>
+    <div *ngFor="let task of doingTasks" class="task">
+      <h1>{{ task.name }}</h1>
+      <p>{{task.description}}</p>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="task manage options" class="menuBtn">
+        <mat-icon>more_horiz</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="navigateToTaskDetails(task.id)">
+          <mat-icon>info</mat-icon>
+          <span>Show details</span>
+        </button>
+        <button mat-menu-item (click)="navigateToEditTask(task.id)">
+          <mat-icon>mode_edit</mat-icon>
+          <span>Edit task</span>
+        </button>
+        <button mat-menu-item (click)="deleteTask(task.id)">
+          <mat-icon>delete</mat-icon>
+          <span>Delete task</span>
+        </button>
+      </mat-menu>
+      <div class="navBtns">
+        <button (click)="onStatusChange(task, Status.TODO)" mat-mini-fab><mat-icon>arrow_back</mat-icon></button>
+        <button (click)="onStatusChange(task, Status.DONE)" mat-mini-fab><mat-icon>arrow_forward</mat-icon></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <h2>Done</h2>
+    <div *ngFor="let task of doneTasks" class="task">
+      <h1>{{ task.name }}</h1>
+      <p>{{task.description}}</p>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="task manage options" class="menuBtn">
+        <mat-icon>more_horiz</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="navigateToTaskDetails(task.id)">
+          <mat-icon>info</mat-icon>
+          <span>Show details</span>
+        </button>
+        <button mat-menu-item (click)="navigateToEditTask(task.id)">
+          <mat-icon>mode_edit</mat-icon>
+          <span>Edit task</span>
+        </button>
+        <button mat-menu-item (click)="deleteTask(task.id)">
+          <mat-icon>delete</mat-icon>
+          <span>Delete task</span>
+        </button>
+      </mat-menu>
+      <div class="navBtns">
+        <button (click)="onStatusChange(task, Status.DOING)" mat-mini-fab><mat-icon>arrow_back</mat-icon></button>
+        <button (click)="onStatusChange(task, Status.DONE)" mat-mini-fab
+          disabled><mat-icon>arrow_forward</mat-icon></button>
+      </div>
+    </div>
+  </div>
+</div>

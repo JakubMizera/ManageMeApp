@@ -38,9 +38,9 @@ export class TaskCreateComponent implements OnInit {
   onSubmit(): void {
     if (this.taskForm.valid) {
       const newTask: Task = this.taskForm.value;
-      const taskId = this.taskService.addTask(this.projectId, this.functionalityId, newTask);
+      this.taskService.addTask(this.projectId, this.functionalityId, newTask);
       this.taskForm.reset();
-      this.router.navigate(['/project', this.projectId, 'functionality', this.functionalityId, 'task', taskId]);
+      this.router.navigate(['/project', this.projectId, 'functionality', this.functionalityId, 'task', 'list']);
     };
   };
 
