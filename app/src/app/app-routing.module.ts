@@ -31,6 +31,8 @@ const routes: Routes = [
   { path: 'project/:id/functionality/:functionalityId/add', component: TaskCreateComponent },
   { path: 'project/:id/functionality/:functionalityId/task/list', component: TaskListComponent },
   { path: 'project/:id/functionality/:functionalityId/task/:taskId', component: TaskViewComponent },
+  
+  { path: 'project/:id/functionality/:functionalityId/task/edit/:taskId', component: TaskViewComponent },
 ];
 
 @NgModule({
