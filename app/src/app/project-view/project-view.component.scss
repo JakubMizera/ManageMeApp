@@ -1,8 +1,8 @@
 .container {
     padding: 20px;
-    border-bottom: 1px solid black;
-    display: grid;
-    grid-template-columns: 3fr 1fr;
+    border-bottom:  2px solid rgb(60, 60, 60);
+    position: relative;
+    padding: 30px;
 
     .details {
         h2 {
@@ -14,5 +14,10 @@
         }
     }
 
-    .btns {}
+    .menuBtn {
+      border: 1px solid rgb(60, 60, 60);
+      position: absolute;
+      right: 1%;
+      top: 1%;
+    }
 }

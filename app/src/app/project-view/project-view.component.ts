@@ -45,8 +45,4 @@ export class ProjectViewComponent implements OnInit {
     });
   };
 
-  navigateToFunctionalityCreate(id: number): void {
-    this.router.navigate(['project', id, 'functionality', 'add']);
-  };
-
 };

@@ -1,3 +1,14 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+
+  h1 {
+    margin: 0;
+  }
+}
+
 .container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -12,7 +23,6 @@
     background-color: #222329;
     border-radius: 12px;
     padding: 20px 0;
-
 
     h2 {
       font-size: 1.6rem;

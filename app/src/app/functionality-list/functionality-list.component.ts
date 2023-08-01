@@ -55,6 +55,10 @@ export class FunctionalityListComponent implements OnInit {
     });
   };
 
+  navigateToFunctionalityCreate(id: number): void {
+    this.router.navigate(['project', id, 'functionality', 'add']);
+  };
+
   navigateToEditFunctionality(functionalityId: number): void {
     this.router.navigate(['project', this.projectId, 'functionality', 'edit', functionalityId]);
   };

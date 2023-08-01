@@ -1,3 +1,10 @@
+<div class="nav">
+  <h1>Functionalities</h1>
+  <button mat-fab extended color="accent" (click)="navigateToFunctionalityCreate(projectId)">
+    <mat-icon>add_circle</mat-icon>
+    Create functionality
+  </button>
+</div>
 <div class="container">
   <div class="column">
     <h2>To do</h2>
@@ -25,10 +32,10 @@
         </button>
       </mat-menu>
       <div class="navBtns">
-        <button (click)="onStatusChange(functionality, Status.TODO)" mat-fab
+        <button (click)="onStatusChange(functionality, Status.TODO)" mat-mini-fab
           disabled><mat-icon>arrow_back</mat-icon></button>
         <button (click)="onStatusChange(functionality, Status.DOING)"
-          mat-fab><mat-icon>arrow_forward</mat-icon></button>
+          mat-mini-fab><mat-icon>arrow_forward</mat-icon></button>
       </div>
     </div>
   </div>
@@ -60,8 +67,8 @@
         </button>
       </mat-menu>
       <div class="navBtns">
-        <button (click)="onStatusChange(functionality, Status.TODO)" mat-fab><mat-icon>arrow_back</mat-icon></button>
-        <button (click)="onStatusChange(functionality, Status.DONE)" mat-fab><mat-icon>arrow_forward</mat-icon></button>
+        <button (click)="onStatusChange(functionality, Status.TODO)" mat-mini-fab><mat-icon>arrow_back</mat-icon></button>
+        <button (click)="onStatusChange(functionality, Status.DONE)" mat-mini-fab><mat-icon>arrow_forward</mat-icon></button>
       </div>
     </div>
   </div>
@@ -93,8 +100,8 @@
         </button>
       </mat-menu>
       <div class="navBtns">
-        <button (click)="onStatusChange(functionality, Status.DOING)" mat-fab><mat-icon>arrow_back</mat-icon></button>
-        <button (click)="onStatusChange(functionality, Status.DONE)" mat-fab
+        <button (click)="onStatusChange(functionality, Status.DOING)" mat-mini-fab><mat-icon>arrow_back</mat-icon></button>
+        <button (click)="onStatusChange(functionality, Status.DONE)" mat-mini-fab
           disabled><mat-icon>arrow_forward</mat-icon></button>
       </div>
     </div>

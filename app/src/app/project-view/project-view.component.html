@@ -3,20 +3,22 @@
     <p>Project nr {{project.id}}</p>
     <h2>{{project.name}}</h2>
     <p>{{project.description}}</p>
-    <p>Project start date: {{project.startDate | date:'dd/MM/yyyy'}}</p>
-    <p>Project duration: {{project.duration}}h (wyliczyć z zadań?)</p>
-    <p>Expected duration of the project: {{project.expectedDuration}}h (wyliczyć z funkcjonalnosci?)</p>
-    <p>Number of hours worked: {{project.hoursWorked}}h (wyliczyć z zadań)</p>
-    <p>Users: {{project.involvedUsers}} (wypisać wszystkich użytkowników pracujących nad projektem)</p>
   </div>
-  <div class="btns">
-    <button mat-fab color="primary"
-      (click)="navigateToProjectEdit(project.id)"><mat-icon>mode_edit</mat-icon></button>
-    <button mat-fab color="warn" (click)="deleteProject(project.id)"><mat-icon>delete</mat-icon></button>
-    <button mat-fab extended color="primary" (click)="navigateToFunctionalityCreate(project.id)">
-      <mat-icon>add_circle</mat-icon>
-      Create functionality
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="projects manage options" class="menuBtn">
+    <mat-icon>more_horiz</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <!-- TODO dodać show details -->
+    <button mat-menu-item>
+      <mat-icon>info</mat-icon>
+      <span>Show details</span>
     </button>
-  </div>
+    <button mat-menu-item (click)="navigateToProjectEdit(project.id)">
+      <mat-icon>mode_edit</mat-icon>
+      <span>Edit project</span>
+    </button>
+    <button mat-menu-item (click)="deleteProject(project.id)"><mat-icon>delete</mat-icon><span>Delete project</span>
+    </button>
+  </mat-menu>
 </div>
 <router-outlet></router-outlet>
