@@ -31,6 +31,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { TaskCreateComponent } from './task-create/task-create.component';
 import { TaskViewComponent } from './task-view/task-view.component';
+import { ProjectDetailsComponent } from './project-details/project-details.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { TaskViewComponent } from './task-view/task-view.component';
     FunctionalityEditComponent,
     FunctionalityListComponent,
     TaskCreateComponent,
-    TaskViewComponent
+    TaskViewComponent,
+    ProjectDetailsComponent
   ],
   imports: [
     BrowserModule,
