@@ -45,4 +45,8 @@ export class ProjectViewComponent implements OnInit {
     });
   };
 
+  navigateToProjectDetails(id: number): void {
+    this.router.navigate(['/project/details/', id]);
+  }
+
 };

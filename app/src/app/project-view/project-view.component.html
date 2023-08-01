@@ -8,8 +8,7 @@
     <mat-icon>more_horiz</mat-icon>
   </button>
   <mat-menu #menu="matMenu">
-    <!-- TODO dodać show details -->
-    <button mat-menu-item>
+    <button mat-menu-item (click)="navigateToProjectDetails(project.id)">
       <mat-icon>info</mat-icon>
       <span>Show details</span>
     </button>

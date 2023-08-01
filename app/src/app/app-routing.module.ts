@@ -10,6 +10,7 @@ import { FunctionalityEditComponent } from './functionality-edit/functionality-e
 import { FunctionalityListComponent } from './functionality-list/functionality-list.component';
 import { TaskCreateComponent } from './task-create/task-create.component';
 import { TaskViewComponent } from './task-view/task-view.component';
+import { ProjectDetailsComponent } from './project-details/project-details.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
     ],
   },
   { path: 'project/edit/:id', component: ProjectEditComponent },
+  { path: 'project/details/:id', component: ProjectDetailsComponent },
   { path: 'project/:id/functionality/add', component: FunctionalityCreateComponent },
   { path: 'project/:id/functionality/:functionalityId', component: FunctionalityViewComponent },
   { path: 'project/:id/functionality/edit/:functionalityId', component: FunctionalityEditComponent },

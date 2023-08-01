@@ -8,6 +8,11 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
+      
+      <button mat-menu-item (click)="navigateToProjectDetails(project.id)">
+        <mat-icon>info</mat-icon>
+        <span>Show details</span>
+      </button>
 
       <button mat-menu-item (click)="navigateToProjectEdit(project.id)">
         <mat-icon>mode_edit</mat-icon>
