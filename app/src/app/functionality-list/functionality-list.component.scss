@@ -54,11 +54,24 @@
         padding-top: 10px;
       }
 
-      .menuBtn {
+      .sideBtns {
         position: absolute;
         right: 3px;
         top: 3px;
-        border: 1px solid rgb(60, 60, 60);
+        display: flex;
+        align-items: center;
+        gap: 5px;
+
+        .menuBtn {
+          border: 1px solid rgb(60, 60, 60);
+
+        }
+
+        .openTasksBtn {
+          // width: 48px;
+          // height: 48px;
+
+        }
       }
     }
   }

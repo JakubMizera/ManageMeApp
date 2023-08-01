@@ -11,9 +11,14 @@
     <div *ngFor="let functionality of todoFunctionalities" class="functionality">
       <h1>{{ functionality.name }}</h1>
       <p>{{functionality.description}}</p>
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="functionality manage options" class="menuBtn">
-        <mat-icon>more_horiz</mat-icon>
-      </button>
+      <div class="sideBtns">
+        <button mat-mini-fab (click)="navigateToTaskList(functionality.id)" class="openTasksBtn">
+          <mat-icon>open_in_full</mat-icon>
+        </button>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="functionality manage options" class="menuBtn">
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+      </div>
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="navigateToCreateTask(functionality.id)">
           <mat-icon>add_task</mat-icon>
@@ -45,9 +50,14 @@
     <div *ngFor="let functionality of doingFunctionalities" class="functionality">
       <h1>{{ functionality.name }}</h1>
       <p>{{functionality.description}}</p>
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="functionality manage options" class="menuBtn">
-        <mat-icon>more_horiz</mat-icon>
-      </button>
+      <div class="sideBtns">
+        <button mat-mini-fab (click)="navigateToTaskList(functionality.id)" class="openTasksBtn">
+          <mat-icon>open_in_full</mat-icon>
+        </button>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="functionality manage options" class="menuBtn">
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+      </div>
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="navigateToCreateTask(functionality.id)">
           <mat-icon>add_task</mat-icon>
@@ -78,9 +88,14 @@
     <div *ngFor="let functionality of doneFunctionalities" class="functionality">
       <h1>{{ functionality.name }}</h1>
       <p>{{functionality.description}}</p>
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="functionality manage options" class="menuBtn">
-        <mat-icon>more_horiz</mat-icon>
-      </button>
+      <div class="sideBtns">
+        <button mat-mini-fab (click)="navigateToTaskList(functionality.id)" class="openTasksBtn">
+          <mat-icon>open_in_full</mat-icon>
+        </button>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="functionality manage options" class="menuBtn">
+          <mat-icon>more_horiz</mat-icon>
+        </button>
+      </div>
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="navigateToCreateTask(functionality.id)">
           <mat-icon>add_task</mat-icon>

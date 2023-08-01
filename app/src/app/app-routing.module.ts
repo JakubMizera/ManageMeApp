@@ -11,6 +11,7 @@ import { FunctionalityListComponent } from './functionality-list/functionality-l
 import { TaskCreateComponent } from './task-create/task-create.component';
 import { TaskViewComponent } from './task-view/task-view.component';
 import { ProjectDetailsComponent } from './project-details/project-details.component';
+import { TaskListComponent } from './task-list/task-list.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'project/:id/functionality/:functionalityId', component: FunctionalityViewComponent },
   { path: 'project/:id/functionality/edit/:functionalityId', component: FunctionalityEditComponent },
   { path: 'project/:id/functionality/:functionalityId/add', component: TaskCreateComponent },
+  { path: 'project/:id/functionality/:functionalityId/task/list', component: TaskListComponent },
   { path: 'project/:id/functionality/:functionalityId/task/:taskId', component: TaskViewComponent },
 ];
 
