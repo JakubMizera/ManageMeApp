@@ -14,7 +14,6 @@ export class TaskCreateComponent implements OnInit {
   projectId!: number;
   functionalityId!: number;
 
-
   constructor(
     private formBuilder: FormBuilder,
     private taskService: TaskService,
@@ -23,11 +22,9 @@ export class TaskCreateComponent implements OnInit {
 
   ) { }
 
-
   ngOnInit(): void {
     this.projectId = Number(this.route.snapshot.paramMap.get('id'));
     this.functionalityId = Number(this.route.snapshot.paramMap.get('functionalityId'));
-
 
     this.taskForm = this.formBuilder.group({
       name: ['', Validators.required],
@@ -39,12 +36,11 @@ export class TaskCreateComponent implements OnInit {
   };
 
   onSubmit(): void {
-    if(this.taskForm.valid) {
+    if (this.taskForm.valid) {
       const newTask: Task = this.taskForm.value;
-      this.taskService.addTask(this.projectId, this.functionalityId, newTask);
+      const taskId = this.taskService.addTask(this.projectId, this.functionalityId, newTask);
       this.taskForm.reset();
-      // TODO = navigate to correct place
-      this.router.navigate(['/project', this.projectId, 'functionality', this.functionalityId, 'task', ])
+      this.router.navigate(['/project', this.projectId, 'functionality', this.functionalityId, 'task', taskId]);
     };
   };
 
