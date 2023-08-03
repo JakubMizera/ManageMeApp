@@ -55,6 +55,14 @@ export class TaskService {
       if (index !== -1) {
         updatedTask.id = taskId;
         functionality.tasks[index] = updatedTask;
+        // Set startDate if to functionality if any task status is set to DOING
+        if(updatedTask.status === Status.DOING && !functionality.startDate){
+          functionality.startDate = new Date();
+        };
+        // Change functionality status from TODO to DOING if any task is set to DOING
+        if(functionality.tasks.some(task => task.status === Status.DOING) && functionality.status === Status.TODO){
+          functionality.status = Status.DOING;
+        };
         this.functionalityService.editFunctionality(projectId, functionalityId, functionality);
       };
     };

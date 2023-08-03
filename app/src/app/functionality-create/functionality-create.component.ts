@@ -31,8 +31,7 @@ export class FunctionalityCreateComponent implements OnInit {
       priority: [Priority.MEDIUM, Validators.required],
       status: [Status.TODO, Validators.required],
       addedDate: [new Date(), Validators.required],
-      // TODO start date zaczyna sie wtedy kiedy status jest zmieniony z "todo" na "doing"
-      startDate: ['', Validators.required],
+      startDate: [],
       hoursWorked: [0],
       involvedUsers: [[]],
       tasks: [[]],
