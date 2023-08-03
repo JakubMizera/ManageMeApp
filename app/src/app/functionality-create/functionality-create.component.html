@@ -23,7 +23,6 @@
     </mat-select>
   </mat-form-field>
 
-
   <mat-form-field>
     <mat-label>Status</mat-label>
     <mat-select id="status" formControlName="status" class="form-control" required>
@@ -33,16 +32,8 @@
     </mat-select>
   </mat-form-field>
 
-
-  <mat-form-field>
-    <mat-label>Start Date</mat-label>
-    <input matInput [matDatepicker]="picker" formControlName="startDate" required>
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
-
-
-  <button mat-raised-button color="primary" type="submit" [disabled]="functionalityForm.invalid">Create this
-    functionality</button>
+  <button mat-raised-button color="primary" type="submit" [disabled]="functionalityForm.invalid">
+    Create this functionality
+  </button>
 
 </form>
