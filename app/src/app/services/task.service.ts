@@ -48,6 +48,7 @@ export class TaskService {
 
   editTask(projectId: number, functionalityId: number, taskId: number, updatedTask: Task): void {
     const functionality = this.getFunctionalityById(projectId, functionalityId);
+    const task = this.getTaskById(projectId, functionalityId, taskId);
 
     if (functionality) {
       const index = functionality.tasks.findIndex(t => t.id === taskId);
@@ -56,11 +57,22 @@ export class TaskService {
         updatedTask.id = taskId;
         functionality.tasks[index] = updatedTask;
         // Set startDate if to functionality if any task status is set to DOING
-        if(updatedTask.status === Status.DOING && !functionality.startDate){
+        if (updatedTask.status === Status.DOING && !functionality.startDate) {
           functionality.startDate = new Date();
         };
+
+        // Set startDate to task if task status is set to DOING
+        if (task && updatedTask.status === Status.DOING && !updatedTask.startDate) {
+          task.startDate = new Date();
+        };
+
+        // Set finishedDate to task if task status is set to DONE
+        if (task && updatedTask.status === Status.DONE && !updatedTask.finishedDate) {
+          task.finishedDate = new Date();
+        };
+
         // Change functionality status from TODO to DOING if any task is set to DOING
-        if(functionality.tasks.some(task => task.status === Status.DOING) && functionality.status === Status.TODO){
+        if (functionality.tasks.some(task => task.status === Status.DOING) && functionality.status === Status.TODO) {
           functionality.status = Status.DOING;
         };
         this.functionalityService.editFunctionality(projectId, functionalityId, functionality);
