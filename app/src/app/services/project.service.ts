@@ -87,6 +87,7 @@ export class ProjectService {
     }
     projectToEdit.id = id;
     this.projects[index] = projectToEdit;
+    projectToEdit.hoursWorked = this.calculateHoursWorked(id);
     this.saveProjectsToLocalStorage();
   };
 
@@ -109,5 +110,16 @@ export class ProjectService {
       return duration < expectedDuration ? null : { durationError: true };
     }
     return null;
+  };
+
+  calculateHoursWorked(projectId: number): number {
+    const project = this.getProjectById(projectId);
+    let totalHours = 0;
+    if (project) {
+      project.functionalities.forEach((functionality) => {
+        totalHours += functionality.hoursWorked;
+      });
+    };
+    return totalHours;
   };
 }
