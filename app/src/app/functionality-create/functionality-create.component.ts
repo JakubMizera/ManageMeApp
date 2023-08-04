@@ -29,7 +29,7 @@ export class FunctionalityCreateComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       priority: [Priority.MEDIUM, Validators.required],
-      status: [Status.TODO, Validators.required],
+      status: [Status.TODO],
       addedDate: [new Date(), Validators.required],
       startDate: [],
       hoursWorked: [0],

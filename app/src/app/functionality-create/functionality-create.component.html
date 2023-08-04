@@ -23,15 +23,6 @@
     </mat-select>
   </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Status</mat-label>
-    <mat-select id="status" formControlName="status" class="form-control" required>
-      <mat-option value="To do">To do</mat-option>
-      <mat-option value="Doing">Doing</mat-option>
-      <mat-option value="Done">Done</mat-option>
-    </mat-select>
-  </mat-form-field>
-
   <button mat-raised-button color="primary" type="submit" [disabled]="functionalityForm.invalid">
     Create this functionality
   </button>
