@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ProjectService } from './project.service';
 import { Functionality, Status } from '../types';
+import { TaskService } from './task.service';
 
 @Injectable({
   providedIn: 'root'
@@ -55,7 +56,7 @@ export class FunctionalityService {
 
         project.functionalities[index] = updatedFunctionality;
         // Set hours worked for functionality
-        updatedFunctionality.hoursWorked = this.calculateHoursWorked(projectId);
+        updatedFunctionality.hoursWorked = this.calculateHoursWorked(projectId, functionalityId);
 
         this.projectService.editProject(projectId, project);
       };
@@ -84,20 +85,14 @@ export class FunctionalityService {
     };
   };
 
-  calculateHoursWorked(projectId: number): number {
-    //TODO fix this to calculate task in functioanlity not all functionalities 
-    const functionalities = this.getAllFunctionalities(projectId);
+  calculateHoursWorked(projectId: number, functionalityId: number): number {
+    const functionality = this.getFunctionalityById(projectId, functionalityId);
     let totalHours = 0;
-    if (functionalities) {
-      functionalities.forEach((f => {
-        f.tasks.forEach(t => {
-          if (t.hoursWorked) {
-            totalHours += t.hoursWorked;
-          };
-        });
-      }));
+    if (functionality) {
+      functionality.tasks.forEach((task) => {
+        totalHours += task.hoursWorked;
+      });
     };
-
     return totalHours;
   };
 };
