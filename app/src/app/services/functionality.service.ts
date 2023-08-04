@@ -85,6 +85,7 @@ export class FunctionalityService {
   };
 
   calculateHoursWorked(projectId: number): number {
+    //TODO fix this to calculate task in functioanlity not all functionalities 
     const functionalities = this.getAllFunctionalities(projectId);
     let totalHours = 0;
     if (functionalities) {
