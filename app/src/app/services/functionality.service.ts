@@ -54,6 +54,9 @@ export class FunctionalityService {
         updatedFunctionality.id = functionalityId;
 
         project.functionalities[index] = updatedFunctionality;
+        // Set hours worked for functionality
+        updatedFunctionality.hoursWorked = this.calculateHoursWorked(projectId);
+
         this.projectService.editProject(projectId, project);
       };
     };
@@ -81,4 +84,19 @@ export class FunctionalityService {
     };
   };
 
+  calculateHoursWorked(projectId: number): number {
+    const functionalities = this.getAllFunctionalities(projectId);
+    let totalHours = 0;
+    if (functionalities) {
+      functionalities.forEach((f => {
+        f.tasks.forEach(t => {
+          if (t.hoursWorked) {
+            totalHours += t.hoursWorked;
+          };
+        });
+      }));
+    };
+
+    return totalHours;
+  };
 };
