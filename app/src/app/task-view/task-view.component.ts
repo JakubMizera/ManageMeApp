@@ -23,6 +23,9 @@ export class TaskViewComponent implements OnInit {
 
     if ((this.projectId || this.functionalityId || this.taksId) !== null) {
       this.task = this.taksService.getTaskById(this.projectId, this.functionalityId, this.taksId);
+      if(this.task){
+        console.log(this.taksService.calculateTaskDuration(this.task));
+      }
     } else {
       throw new Error('Cannot find projectId, functionalityId or taskId');
     };

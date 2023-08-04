@@ -56,7 +56,8 @@ export class TaskService {
       if (index !== -1) {
         updatedTask.id = taskId;
         functionality.tasks[index] = updatedTask;
-        // Set startDate if to functionality if any task status is set to DOING
+
+        // Set startDate to functionality if any task status is set to DOING
         if (updatedTask.status === Status.DOING && !functionality.startDate) {
           functionality.startDate = new Date();
         };
@@ -74,6 +75,10 @@ export class TaskService {
         // Change functionality status from TODO to DOING if any task is set to DOING
         if (functionality.tasks.some(task => task.status === Status.DOING) && functionality.status === Status.TODO) {
           functionality.status = Status.DOING;
+        };
+        // Calculate hours worked in each task
+        if (task) {
+          updatedTask.hoursWorked = this.calculateTaskDuration(task);
         };
         this.functionalityService.editFunctionality(projectId, functionalityId, functionality);
       };
@@ -100,5 +105,16 @@ export class TaskService {
     } else {
       return null;
     };
+  };
+
+  calculateTaskDuration(task: Task): number {
+    if (task.startDate && task.finishedDate) {
+      const startDate = new Date(task.startDate);
+      const finishedDate = new Date(task.finishedDate);
+      const durationInMiliseconds = finishedDate.getTime() - startDate.getTime();
+      const durationInHours = durationInMiliseconds / (1000 * 60 * 60);
+      return Math.ceil(durationInHours);
+    }
+    return 0;
   };
 };
