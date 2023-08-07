@@ -55,3 +55,12 @@ form {
   gap: 1em;
   margin: 0 auto;
 }
+
+app-root {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+}
+
+router-outlet {
+  display: none;
+}
