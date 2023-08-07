@@ -23,11 +23,17 @@ export class ProjectViewComponent implements OnInit {
   //TODO -> przewidywany czas trwania wyliczony z funkcjonalności; liczba wykonanych roboczogodzin wyliczona z zadań; zaangażowane osoby = osoby przypisane do zadań i funkcjonalności
 
   ngOnInit(): void {
-    const projectId = Number(this.route.snapshot.paramMap.get('id'));
-    if (projectId === null) {
-      throw new Error(`Cannot find project with id ${projectId}`);
-    };
-    this.project = this.projectService.getProjectById(projectId);
+
+    this.route.params.subscribe(params => {
+      const projectId = Number(params['id']);
+      this.project = this.projectService.getProjectById(projectId);
+    });
+
+    // const projectId = Number(this.route.snapshot.paramMap.get('id'));
+    // if (projectId === null) {
+    //   throw new Error(`Cannot find project with id ${projectId}`);
+    // };
+    // this.project = this.projectService.getProjectById(projectId);
   };
 
   navigateToProjectEdit(id: number): void {
