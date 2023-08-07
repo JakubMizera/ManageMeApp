@@ -14,7 +14,7 @@ export class FunctionalityListComponent implements OnInit {
   todoFunctionalities: Functionality[] = [];
   doingFunctionalities: Functionality[] = [];
   doneFunctionalities: Functionality[] = [];
-  projectId: number;
+  projectId!: number;
 
   Status = Status;
   functionalities: Functionality[] = [];
@@ -24,12 +24,13 @@ export class FunctionalityListComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private dialog: MatDialog,
-  ) {
-    this.projectId = Number(this.route.snapshot.paramMap.get('id'));
-  }
+  ) { }
 
   ngOnInit() {
-    this.getFunctionalities();
+    this.route.params.subscribe(params => {
+      this.projectId = Number(params['id']);
+      this.getFunctionalities();
+    });
   };
 
   getFunctionalities() {
