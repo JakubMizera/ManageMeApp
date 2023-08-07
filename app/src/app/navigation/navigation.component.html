@@ -1,8 +1,8 @@
 <nav>
   <ul>
     <li routerLink="">Home</li>
+    <li *ngFor="let project of projects">
+        <div (click)="navigateToProject(project.id)">{{project.name}}</div>
+    </li>
   </ul>
-  <div *ngFor="let project of projects">
-      <div (click)="navigateToProject(project.id)">{{project.name}}</div>
-  </div>
 </nav>
