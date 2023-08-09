@@ -1,9 +1,9 @@
 <nav>
   <ul>
-    <li routerLink="">Home</li>
+    <li (click)="navigateToHomepage()">Home</li>
     <li *ngFor="let project of projects">
-        <div (click)="navigateToProject(project.id)" class="projectNav">
-          <mat-icon>folder</mat-icon>
+        <div (click)="navigateToProject(project.id)" class="projectNav" >
+          <mat-icon>{{project.selected ? 'folder_open' : 'folder'}}</mat-icon>
           <span>{{project.name}}</span>
         </div>
     </li>

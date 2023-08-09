@@ -46,6 +46,7 @@ export interface Project {
   hoursWorked: number,
   functionalities: Functionality[],
   involvedUsers: User[],
+  selected?: boolean,
 };
 
 export enum Status {

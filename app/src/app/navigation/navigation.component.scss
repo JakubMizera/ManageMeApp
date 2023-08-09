@@ -17,6 +17,9 @@ nav {
         display: flex;
         align-items: center;
 
+        mat-icon {
+          min-width: 30px;
+        }
 
         span {
           padding-left: 8px;
