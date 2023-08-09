@@ -10,8 +10,18 @@ nav {
 
     li {
       padding: 8px;
-      font-size: 1.4rem;
+      font-size: 1.1rem;
       cursor: pointer;
+
+      .projectNav {
+        display: flex;
+        align-items: center;
+
+
+        span {
+          padding-left: 8px;
+        }
+      }
     }
   }
 }

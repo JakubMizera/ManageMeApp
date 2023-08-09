@@ -19,6 +19,6 @@ export class NavigationComponent implements OnInit {
 
   navigateToProject(projectId: number): void {
     this.router.navigate(['/project', projectId]);
-  }
+  };
 
 }
