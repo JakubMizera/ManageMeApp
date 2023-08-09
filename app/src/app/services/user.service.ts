@@ -12,11 +12,13 @@ export class UserService {
   };
 
   createUser(user: User): void {
+    const id = this.users.reduce((prev, curr) => curr.id > prev ? curr.id : prev, 0);
+    user.id = id;
     this.users.push(user);
     this.saveUsersToStorage();
   };
 
-  getUser(id: number): User | undefined {
+  getUserById(id: number): User | undefined {
     return this.users.find(user => user.id === id);
   };
 

@@ -14,9 +14,11 @@ import { ProjectDetailsComponent } from './project-details/project-details.compo
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskEditComponent } from './task-edit/task-edit.component';
 import { SorryPageComponent } from './sorry-page/sorry-page.component';
+import { UserRegisterComponent } from './user-register/user-register.component';
 
 const routes: Routes = [
   { path: '', component: HomepageComponent },
+  { path: 'register', component: UserRegisterComponent },
   { path: 'project/add', component: ProjectCreateComponent },
   {
     path: 'project/:id',
@@ -34,7 +36,7 @@ const routes: Routes = [
   { path: 'project/:id/functionality/:functionalityId/task/list', component: TaskListComponent },
   { path: 'project/:id/functionality/:functionalityId/task/:taskId', component: TaskViewComponent },
   { path: 'project/:id/functionality/:functionalityId/task/edit/:taskId', component: TaskEditComponent },
-  { path: '**', component: SorryPageComponent},
+  { path: '**', component: SorryPageComponent },
 ];
 
 @NgModule({

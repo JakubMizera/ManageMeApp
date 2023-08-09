@@ -5,7 +5,7 @@ export interface User {
   role: Role,
   login: string,
   password: string,
-  securityQuestion: string,
+  securityQuestion?: string,
   assignedTasks: Task[],
   completedTasks: Task[],
 };

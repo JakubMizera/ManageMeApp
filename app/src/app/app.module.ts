@@ -35,6 +35,7 @@ import { ProjectDetailsComponent } from './project-details/project-details.compo
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskEditComponent } from './task-edit/task-edit.component';
 import { SorryPageComponent } from './sorry-page/sorry-page.component';
+import { UserRegisterComponent } from './user-register/user-register.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { SorryPageComponent } from './sorry-page/sorry-page.component';
     TaskListComponent,
     TaskEditComponent,
     SorryPageComponent,
+    UserRegisterComponent,
   ],
   imports: [
     BrowserModule,
