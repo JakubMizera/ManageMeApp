@@ -36,6 +36,7 @@ import { TaskListComponent } from './task-list/task-list.component';
 import { TaskEditComponent } from './task-edit/task-edit.component';
 import { SorryPageComponent } from './sorry-page/sorry-page.component';
 import { UserRegisterComponent } from './user-register/user-register.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { UserRegisterComponent } from './user-register/user-register.component';
     TaskEditComponent,
     SorryPageComponent,
     UserRegisterComponent,
+    UserLoginComponent,
   ],
   imports: [
     BrowserModule,
