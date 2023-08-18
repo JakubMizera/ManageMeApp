@@ -22,6 +22,10 @@ export class UserService {
     return this.users.find(user => user.id === id);
   };
 
+  getUserByLogin(login: string): User | undefined {
+    return this.users.find(user => user.login === login);
+  };
+
   updateUser(user: User): void {
     const index = this.users.findIndex(u => u.id === user.id);
     if (index !== -1) {

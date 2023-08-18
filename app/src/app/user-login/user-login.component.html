@@ -1,1 +1,31 @@
-<p>user-login works!</p>
+<div class="login-form">
+  <h2>Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <mat-form-field>
+      <mat-label>Login</mat-label>
+      <input matInput id="login" formControlName="login">
+      <mat-error *ngIf="loginForm.get('login')?.hasError('required') && loginForm.get('login')?.touched">
+        Login is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput type="password" id="password" formControlName="password">
+      <mat-error *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
+        Password is required.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-error *ngIf="loginError" class="error-message">Invalid login credentials. Please try again.</mat-error>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">Login</button>
+  </form>
+  <div class="register">
+    <p>Don't have an account?</p>
+    <button mat-fab extended color="accent" routerLink="/register">
+      <mat-icon>account_circle</mat-icon>
+      Register
+    </button>
+  </div>
+</div>
