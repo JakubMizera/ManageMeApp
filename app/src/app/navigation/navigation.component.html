@@ -2,13 +2,17 @@
   <ul>
     <li (click)="navigateToHomepage()">Home</li>
     <li *ngFor="let project of projects">
-        <div (click)="navigateToProject(project.id)" class="projectNav" >
-          <mat-icon>{{project.selected ? 'folder_open' : 'folder'}}</mat-icon>
-          <span>{{project.name}}</span>
-        </div>
+      <div (click)="navigateToProject(project.id)" class="projectNav">
+        <mat-icon>{{project.selected ? 'folder_open' : 'folder'}}</mat-icon>
+        <span>{{project.name}}</span>
+      </div>
     </li>
-    <li routerLink="/login">
+    <li *ngIf="!loggedInUser" routerLink="/login">
       Login
     </li>
+    <div class="userInfo" *ngIf="loggedInUser">
+      <p>Logged in as: {{loggedInUser.login}}</p>
+      <button mat-flat-button  (click)="logout()">Logout</button>
+    </div>
   </ul>
 </nav>

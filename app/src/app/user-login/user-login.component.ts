@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-user-login',
@@ -12,7 +13,12 @@ export class UserLoginComponent implements OnInit {
   loginForm!: FormGroup;
   loginError: boolean = false;
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router) { }
+  constructor(
+    private userService: UserService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+    ) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -29,7 +35,7 @@ export class UserLoginComponent implements OnInit {
       const user = this.userService.getUserByLogin(login);
 
       if (user && user.password === password) {
-        // TODO: Store user session/token for authentication
+        this.authService.login(user);
         this.loginError = false;
         this.router.navigate(['/']); // Redirect to home page after successful login
       } else {

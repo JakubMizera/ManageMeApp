@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { Role } from '../types';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-user-register',
@@ -12,8 +13,13 @@ import { Router } from '@angular/router';
 export class UserRegisterComponent implements OnInit {
   userForm!: FormGroup;
 
-  constructor(private userService: UserService, private formBuilder: FormBuilder, private router: Router) { }
-  
+  constructor(
+    private userService: UserService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+  ) { }
+
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
       firstName: ['', Validators.required],
@@ -26,9 +32,9 @@ export class UserRegisterComponent implements OnInit {
 
   onRegister(): void {
     if (this.userForm.valid) {
-      this.userService.createUser(this.userForm.value);
+      const newUser = this.userService.createUser(this.userForm.value);
       this.userForm.reset();
-      // TODO - login created user?
+      this.authService.login(newUser);
       this.router.navigate(['/']);
     };
   };

@@ -11,11 +11,12 @@ export class UserService {
     this.loadUsersFromStorage();
   };
 
-  createUser(user: User): void {
+  createUser(user: User): User {
     const id = this.users.reduce((prev, curr) => curr.id > prev ? curr.id : prev, 0);
     user.id = id;
     this.users.push(user);
     this.saveUsersToStorage();
+    return user;
   };
 
   getUserById(id: number): User | undefined {
