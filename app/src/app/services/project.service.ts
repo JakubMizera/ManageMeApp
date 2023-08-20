@@ -1,54 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Project } from '../types';
 import { FormGroup } from '@angular/forms';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectService {
   projects!: Project[];
-  private defaultProjects: Project[] = [
-    {
-      id: 1,
-      name: 'Project Management Tool',
-      description: 'A web application for managing projects, tasks, and teams.',
-      startDate: new Date('2023-07-02T10:00:00'),
-      duration: 1,
-      expectedDuration: 15,
-      hoursWorked: 1,
-      functionalities: [],
-      involvedUsers: []
-    },
-    {
-      id: 2,
-      name: 'E-Commerce Platform',
-      description: 'An online marketplace for buying and selling goods.',
-      startDate: new Date('2023-07-02T10:00:00'),
-      duration: 4,
-      expectedDuration: 30,
-      hoursWorked: 0,
-      functionalities: [],
-      involvedUsers: []
-    },
-    {
-      id: 3,
-      name: 'Weather Forecasting App',
-      description: 'A mobile application that provides real-time weather updates and forecasts.',
-      startDate: new Date('2023-07-03T11:00:00'),
-      duration: 0,
-      expectedDuration: 16,
-      hoursWorked: 14,
-      functionalities: [],
-      involvedUsers: []
-    }
-  ];
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.loadProjectsFromLocalStorage();
-    if (this.projects.length === 0) {
-      this.projects = this.defaultProjects;
-      this.saveProjectsToLocalStorage();
-    };
   };
 
   private loadProjectsFromLocalStorage(): void {
@@ -75,6 +37,12 @@ export class ProjectService {
   addProject(project: Project): number {
     const id = this.projects.reduce((prev, curr) => curr.id > prev ? curr.id : prev, 0) + 1;
     project.id = id;
+
+    const loggedInUser = this.authService.getLoggedInUser();
+    if (loggedInUser) {
+      project.involvedUsers.push(loggedInUser);
+    };
+
     this.projects.push(project);
     this.saveProjectsToLocalStorage();
     return id;

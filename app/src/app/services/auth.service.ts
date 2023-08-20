@@ -14,6 +14,7 @@ export class AuthService {
     this.currentUserSubject.next(user);
   };
 
+
   login(user: User): void {
     localStorage.setItem('currentUser', JSON.stringify(user));
     this.currentUserSubject.next(user);
@@ -22,5 +23,9 @@ export class AuthService {
   logout(): void {
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+  };
+
+  getLoggedInUser(): User | null {
+    return this.currentUserSubject.value;
   };
 }
