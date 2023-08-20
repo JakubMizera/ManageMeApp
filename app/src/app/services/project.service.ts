@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Project } from '../types';
+import { Project, User } from '../types';
 import { FormGroup } from '@angular/forms';
 import { AuthService } from './auth.service';
 
@@ -32,6 +32,20 @@ export class ProjectService {
       throw new Error(`Cannot find project with id ${id}`);
     }
     return project;
+  };
+
+  //TODO fix this method
+  // now doesnt show any project
+  getProjectsByUser(user: User): Project[] {
+    const userProjects: Project[] = [];
+    this.projects.forEach(project => {
+      project.involvedUsers.forEach(involvedUser => {
+        if(involvedUser.id === user.id) {
+          userProjects.push(project);
+        };
+      });
+    });
+    return userProjects;
   };
 
   addProject(project: Project): number {

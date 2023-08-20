@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Project } from '../types';
+import { Project, User } from '../types';
 import { ProjectService } from '../services/project.service';
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-homepage',
@@ -12,11 +13,22 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 })
 export class HomepageComponent implements OnInit {
   projects!: Project[];
+  loggedInUser!: User | null;
 
-  constructor(private projectService: ProjectService, private router: Router, private dialog: MatDialog,) { }
+  constructor(
+    private projectService: ProjectService,
+    private router: Router,
+    private dialog: MatDialog,
+    private authService: AuthService,
+  ) { }
 
   ngOnInit(): void {
-    this.projects = this.projectService.getAllProjects();
+    this.loggedInUser = this.authService.getLoggedInUser();
+    if (this.loggedInUser) {
+      console.log(this.loggedInUser.id);
+      this.projects = this.projectService.getProjectsByUser(this.loggedInUser);
+      console.log(this.projects);
+    };
   };
 
   navigateToProjectView(id: number): void {
